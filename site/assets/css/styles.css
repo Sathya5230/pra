@@ -1004,3 +1004,50 @@ body.has-sticky { padding-bottom: 68px; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .marquee-track, .stamp svg { animation: none; }
 }
+
+/* ---------- Retro layer ----------
+   A light 70s confectioner's grade over everything above: faded warm photos,
+   hard offset "sticker" shadows, chocolate stripes and paper grain. */
+:root { --hard: var(--ganache); --stripes: 0 3px 0 var(--gold), 0 6px 0 var(--milk), 0 9px 0 var(--cocoa); }
+.on-dark, .site-footer, .intent--corp { --hard: var(--bitter); }
+
+/* Faded, warm print look on photography */
+main img, .mega-feature img { filter: sepia(.22) saturate(.88) contrast(1.04) brightness(.98); }
+
+/* Paper grain over the whole page */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 95; pointer-events: none; opacity: .22; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .28 0 0 0 0 .15 0 0 0 .3 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Gold / milk / cocoa stripes under the header and atop the footer */
+.site-header { border-bottom: 0; box-shadow: var(--stripes); }
+.site-footer { box-shadow: inset 0 3px 0 var(--cocoa), inset 0 6px 0 var(--milk), inset 0 9px 0 var(--gold); }
+
+/* Offset headline shadow */
+.hero h1, .page-hero h1, .plp-head h1 { text-shadow: .045em .045em 0 var(--latte); }
+.on-dark h1, .page-hero--ganache h1, .plp-head--ganache h1 { text-shadow: .045em .045em 0 var(--cocoa); }
+h1 .script { text-shadow: none; }
+
+/* Sticker buttons */
+.btn { box-shadow: 3px 3px 0 var(--hard); transition: background-color .2s, color .2s, border-color .2s, transform .15s, box-shadow .15s; }
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--hard); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--hard); }
+.btn-light { --hard: var(--milk); }
+
+/* Sticker cards */
+.card-media, .intent, .step-card, .tile, .col-card, .journal-card .ph, .mega-feature, .hero-label {
+  border: 2px solid var(--ganache); box-shadow: 5px 5px 0 var(--hard);
+}
+.step-card { border-color: var(--ganache); }
+.step-card:hover { border-color: var(--cocoa); }
+.intent--corp { border-color: var(--bitter); }
+.intent:hover, .step-card:hover { transform: translate(-2px, -4px); box-shadow: 7px 9px 0 var(--hard); }
+.intent, .step-card { transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .2s; }
+.tile--pending { box-shadow: none; border-color: var(--latte); }
+
+/* Badges and chips get an inked outline */
+.badge, .trust-chips li, .tag { border: 1.5px solid var(--ganache); }
+.chip { border-width: 2px; }
+.chip[aria-current="page"] { box-shadow: 2px 2px 0 var(--ganache); }
+.hero-label { border-left: 6px solid var(--gold); }

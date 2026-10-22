@@ -1,4 +1,5 @@
 """Shared layout and section components for the static build."""
+import re
 from html import escape as esc
 from pathlib import Path
 
@@ -110,33 +111,33 @@ def marquee(words, cls=""):
 
 
 # ---------- Navigation: workbook Navigation sheet, in sheet order ----------
-NAV = [
-    ("Shop", "/collections/all", [
-        ("Pralines & ballotins", [("All Chocolates", "/collections/all"), ("Pralines & Truffles", "/collections/pralines-and-truffles"), ("Ballotins", "/collections/ballotins"), ("Gift Boxes", "/collections/gift-boxes"), ("Build a Ballotin", "/pages/build-a-ballotin")]),
-        ("More to choose", [("Chocolate Tablets", "/collections/chocolate-tablets"), ("Small Gifts", "/collections/small-gifts"), ("Premium Gifts", "/collections/premium-gifts"), ("Belgian Classics", "/collections/belgian-classics"), ("Seasonal Drops", "/collections/seasonal-drops")]),
-    ], ("premium-box", "Prestige collection", "/products/prestige-48")),
-    ("Gifts", "/collections/gift-boxes", [
-        ("By occasion", [("Birthday Gifts", "/collections/birthday-gifts"), ("Thank You Gifts", "/collections/thank-you-gifts"), ("Love & Romance", "/collections/love-and-romance"), ("Dinner Party Gifts", "/collections/dinner-party-gifts")]),
-        ("By size", [("Small Attentions", "/collections/small-gifts"), ("Gift Boxes", "/collections/gift-boxes"), ("Premium Gifts", "/collections/premium-gifts")]),
-    ], ("gift-ribbon", "Every order includes a free gift card", "/collections/gift-boxes")),
-    ("Corporate Gifts", "/pages/corporate-gifting", [
-        ("Corporate gifting", [("Corporate Gifting", "/pages/corporate-gifting"), ("Pralines with Logo", "/pages/pralines-with-logo"), ("Client Gifts", "/pages/client-gifts"), ("Employee Gifts", "/pages/employee-gifts"), ("Corporate Gift Boxes", "/collections/corporate-gifts")]),
-        ("Get started", [("Request a Quote", "/pages/request-a-quote"), ("Upload Your Logo", "/pages/upload-your-logo")]),
-    ], ("logo-box", "Your logo, in cocoa butter", "/pages/pralines-with-logo")),
-    ("Vegan & Conscious", "/collections/vegan-chocolates", [
-        ("Shop", [("Vegan Chocolate", "/collections/vegan-chocolates"), ("Organic", "/collections/organic-chocolate"), ("Fairtrade", "/collections/fairtrade-chocolate"), ("No Alcohol", "/collections/no-alcohol-chocolates")]),
-        ("Read", [("Ingredients & Transparency", "/pages/ingredients"), ("Organic & Fairtrade (proof)", "/pages/organic-and-fairtrade")]),
-    ], ("raspberry", "Vegan pralines, no second best", "/collections/vegan-chocolates")),
-    ("Our Chocolate", "/pages/belgian-pralines", [
-        ("Our chocolate", [("Belgian Pralines", "/pages/belgian-pralines"), ("Ingredients", "/pages/ingredients"), ("Allergens", "/pages/allergens")]),
-    ], ("pour", "How a praline is made", "/pages/belgian-pralines")),
-    ("Delivery", "/pages/shipping-and-delivery", [
-        ("Delivery", [("Shipping Information", "/pages/shipping-and-delivery"), ("Delivery Calendar", "/pages/delivery-calendar"), ("Warm Weather Shipping", "/pages/warm-weather-shipping"), ("FAQ", "/pages/faq"), ("Returns & Quality Guarantee", "/pages/returns-and-quality-guarantee")]),
-    ], ("delivery-hands", "Packed to travel cool", "/pages/warm-weather-shipping")),
-    ("About", "/pages/about", [
-        ("About us", [("Our Story", "/pages/about"), ("Sustainability", "/pages/sustainability"), ("Contact", "/pages/contact")]),
-    ], ("grand-place", "Made in Brussels", "/pages/about")),
-]
+# Items come from the sheet (build.py calls set_nav); only the top-level link and
+# the mega-menu feature tile live here.
+NAV_META = {
+    "Shop": ("/collections/all", ("premium-box", "Prestige collection", "/products/prestige-48")),
+    "Gifts": ("/collections/gift-boxes", ("gift-ribbon", "Every order includes a free gift card", "/collections/gift-boxes")),
+    "Corporate Gifts": ("/pages/corporate-gifting", ("logo-box", "Your logo, in cocoa butter", "/pages/pralines-with-logo")),
+    "Vegan & Conscious": ("/collections/vegan-chocolates", ("raspberry", "Vegan pralines, no second best", "/collections/vegan-chocolates")),
+    "Our Chocolate": ("/pages/belgian-pralines", ("pour", "How a praline is made", "/pages/belgian-pralines")),
+    "Delivery": ("/pages/shipping-and-delivery", ("delivery-hands", "Packed to travel cool", "/pages/warm-weather-shipping")),
+    "About": ("/pages/about", ("grand-place", "Made in Brussels", "/pages/about")),
+}
+# Navigation sheet "Build note" values that change how a link looks.
+NAV_NOTE_CLASS = {"Use disruptor accent": "nav-accent", "Visible CTA": "nav-cta", "Top-priority path": "nav-priority"}
+NAV = []  # [(top label, href, [(item label, url, css class)], feature)]
+
+
+def set_nav(rows):
+    """rows: Navigation sheet dicts. Top-level order is first appearance (the brief's order);
+    items keep sheet order. Rows without a URL yet (TBD) stay out until decided."""
+    groups = {}
+    for r in rows:
+        url = r["URL"].strip()
+        if not url.startswith("/"):
+            continue
+        label = re.sub(r".*\(label: (.+)\)", r"\1", r["Dropdown item"]).strip()
+        groups.setdefault(r["Top nav (brief)"], []).append((label, url, NAV_NOTE_CLASS.get(r["Build note"], "")))
+    NAV[:] = [(top, NAV_META[top][0], items, NAV_META[top][1]) for top, items in groups.items()]
 
 
 MARK = "assets/img/brand/mark.png"  # crowned cacao pod, stamped on every praline
@@ -175,21 +176,21 @@ def head(title, desc, canonical, noindex=False, extra=""):
 
 
 def header(active=""):
+    def link(n, h, cls):
+        return f'<li><a href="{u(h)}"{f" class={chr(34)}{cls}{chr(34)}" if cls else ""}>{esc(n)}</a></li>'
     items = []
-    for i, (label, href, groups, feat) in enumerate(NAV):
-        cols = "".join(
-            f'<div><h4>{esc(t)}</h4><ul>{"".join(f"<li><a href={chr(34)}{u(h)}{chr(34)}>{esc(n)}</a></li>" for n, h in links)}</ul></div>'
-            for t, links in groups)
+    for label, href, links, feat in NAV:
+        ncols = -(-len(links) // 5)
+        per = -(-len(links) // ncols)
+        cols = "".join(f'<div><ul>{"".join(link(*x) for x in links[c:c + per])}</ul></div>' for c in range(0, len(links), per))
         fk, ft, fh = feat
         feature = f'<a class="mega-feature" href="{u(fh)}">{img(fk, "")}<span>{esc(ft)}</span></a>'
         cur = ' aria-current="true"' if label == active else ""
         items.append(f'''<li class="nav-item">
           <a class="nav-link" href="{u(href)}" aria-haspopup="true" aria-expanded="false"{cur}>{esc(label)}</a>
-          <div class="mega" style="--cols:{len(groups)}">{cols}{feature}</div></li>''')
-    def links_ul(links):
-        return "<ul>" + "".join(f'<li><a href="{u(h)}">{esc(n)}</a></li>' for n, h in links) + "</ul>"
-    mobile = "".join(f"<details><summary>{esc(label)}</summary>" + "".join(links_ul(l) for _, l in groups) + "</details>"
-                     for label, _, groups, _ in NAV)
+          <div class="mega" style="--cols:{ncols}">{cols}{feature}</div></li>''')
+    mobile = "".join(f"<details><summary>{esc(label)}</summary><ul>" + "".join(link(*x) for x in links) + "</ul></details>"
+                     for label, _, links, _ in NAV)
     popular = "".join(f'<a class="chip" href="{u("/search")}?q={t.replace(" ", "+")}">{t}</a>' for t in ["gift box", "ballotin", "vegan", "caramel", "tablet", "logo"])
     return f'''<a class="skip" href="#main">Skip to content</a>
 <div class="announce"><div class="wrap">
@@ -246,7 +247,7 @@ def footer(bg_above="var(--cream)"):
         <p>Belgian pralines made in small batches in Brussels and packed to travel cool. Questions about an order? <a href="mailto:hello@example.com">hello@example.com</a></p>
         <div class="socials"><a class="icon-btn" href="#" aria-label="Instagram">{ICON["insta"]}</a><a class="icon-btn" href="#" aria-label="Pinterest">{ICON["pinterest"]}</a></div>
       </div>
-      <form class="foot-news" data-success="You’re on the list. The first letter arrives next month." data-event="sign_up" novalidate>
+      <form class="foot-news" data-success="You’re on the list. The first letter arrives next month." data-event="newsletter_signup" novalidate>
         <p class="script">Lettre de l’atelier</p>
         <p>New flavours first, and a reminder before the big gifting dates.</p>
         <div class="field"><label class="sr-only" for="foot-email">Email address</label>
@@ -280,7 +281,8 @@ def scripts():
 
 
 def crumbs(items):
-    """items: list of (label, path or None)."""
+    """items: list of (label, path or None). The build reuses them for BreadcrumbList JSON-LD."""
+    CTX["crumbs"] = items
     parts = [f'<a href="{u("/")}">Home</a>']
     for label, path in items:
         parts.append('<span aria-hidden="true">/</span>')
@@ -360,7 +362,7 @@ def quote_form(heading="Get a quote and a sample pack", use_case="", logo=True):
     fields = "".join(
         f'<div class="field"><label for="{i}">{l}</label><input class="input" id="{i}" type="{t}"{" required" if r else ""} autocomplete="{a}">{f"<span class={chr(34)}err{chr(34)}>{e}</span>" if e else ""}</div>'
         for l, i, t, r, a, e in QUOTE_FIELDS)
-    uses = ["Client gifts", "Employee gifts", "Events & trade fairs", "Campaigns", "Seasonal & hospitality", "Something else"]
+    uses = ["Client Gifts", "Employee Gifts", "Event Gifts", "Trade Fair Gifts", "Campaign Gifts", "Something else"]
     opts = "".join(f'<option{" selected" if x == use_case else ""}>{x}</option>' for x in uses)
     logo_html = f'''<div class="field full">
         <span class="label" id="logo-label">Your logo <span class="muted">(optional)</span></span>
@@ -382,10 +384,10 @@ def quote_form(heading="Get a quote and a sample pack", use_case="", logo=True):
       <div class="field"><label for="q-budget">Budget per gift</label><select class="input" id="q-budget"><option>Not sure yet</option><option>Under €25</option><option>€25–50</option><option>€50–100</option><option>€100+</option></select></div>
       <div class="field"><label for="q-date">Delivery needed by</label><input class="input" id="q-date" type="date" required><span class="hint">At least three weeks out for logo pralines.</span><span class="err">Choose a delivery date.</span></div>
       <div class="field full"><span class="label">Personalisation</span>
-        <div class="check-row">{"".join(f'<label class="check"><input type="checkbox" name="q-pers" value="{x}"> <span>{x}</span></label>' for x in ["Logo pralines", "Branded sleeve", "Card", "Ribbon", "Custom packaging"])}</div></div>
+        <div class="check-row">{"".join(f'<label class="check"><input type="checkbox" name="q-pers" value="{x}"> <span>{x}</span></label>' for x in ["Logo Pralines", "Branded Sleeve", "Branded Card", "Branded Ribbon", "Custom Packaging"])}</div></div>
       <div class="field full"><span class="label">Delivery</span>
         <label class="check"><input type="radio" name="q-addr" value="one" checked> <span>One address</span></label>
-        <label class="check"><input type="radio" name="q-addr" value="many"> <span>Several addresses (we’ll send you a spreadsheet template)</span></label>
+        <label class="check"><input type="radio" name="q-addr" value="many"> <span>Several addresses (we’ll send you a spreadsheet template) <span class="placeholder-note">Scope pending Open Decision #6</span></span></label>
       </div>
       {logo_html}
       <div class="field full"><label for="q-notes">Anything else</label><textarea class="input" id="q-notes" placeholder="Colours, message on the card, dietary needs (vegan, no alcohol)…"></textarea></div>
@@ -407,9 +409,9 @@ def quote_form(heading="Get a quote and a sample pack", use_case="", logo=True):
 </div>'''
 
 
-def trust_strip():
-    items = [("hand", "Finished by hand", "In small batches in Brussels"), ("snow", "Packed to travel cool", "Insulated liner on every order"),
-             ("gift", "Free gift card", "No prices in the box"), ("shield", "Arrives right", "Or we replace it")]
+def trust_strip(items=None):
+    items = items or [("hand", "Finished by hand", "In small batches in Brussels"), ("snow", "Packed to travel cool", "Insulated liner on every order"),
+                      ("gift", "Free gift card", "No prices in the box"), ("shield", "Arrives right", "Or we replace it")]
     return '<div class="trust-strip"><div class="wrap">' + "".join(
         f'<div>{icon(i)}<span><b>{t}</b><small>{s}</small></span></div>' for i, t, s in items) + "</div></div>"
 
@@ -423,7 +425,7 @@ def newsletter_band(image="gift-small"):
       <p class="script">Lettre de l’atelier</p>
       <h2 class="h2">New flavours, first</h2>
       <p>One letter a month: seasonal boxes before they sell out, and a reminder before the big gifting dates.</p>
-      <form data-success="You’re on the list. The first letter arrives next month." data-event="sign_up" novalidate>
+      <form data-success="You’re on the list. The first letter arrives next month." data-event="newsletter_signup" novalidate>
         <div class="field"><label class="sr-only" for="nl-email">Email address</label>
           <div class="inline-form"><input class="input" id="nl-email" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn btn-full" type="submit">Subscribe</button></div>
           <span class="err">Enter an email address like name@example.com.</span></div>

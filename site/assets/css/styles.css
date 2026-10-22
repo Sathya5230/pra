@@ -212,6 +212,12 @@ body::before, .hero::before, .section--butter::before, .section--ganache::before
 .mega ul { list-style: none; margin: 0; padding: 0; }
 .mega li a { display: block; padding: .32rem 0; text-decoration: none; }
 .mega li a:hover { color: var(--cocoa); text-decoration: underline; text-underline-offset: 3px; }
+/* Navigation sheet build notes: "Top-priority path", "Use disruptor accent", "Visible CTA" */
+.nav-priority { font-weight: 700; }
+.nav-accent { color: #B5523E; font-weight: 700; }
+.nav-accent::before { content: "✦ "; }
+.mega li a.nav-cta, .drawer li a.nav-cta { display: inline-block; margin-top: .35rem; padding: .35rem .9rem; border: 2px solid var(--cocoa); border-radius: var(--pill); color: var(--cocoa); font-weight: 700; box-shadow: 2px 2px 0 var(--ganache); }
+.mega li a.nav-cta:hover { background: var(--cocoa); color: var(--cream); text-decoration: none; }
 .mega-feature { justify-self: end; width: min(360px, 100%); position: relative; border-radius: 18px; overflow: hidden; text-decoration: none; color: var(--cream); }
 .mega-feature img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; transition: transform .6s var(--ease); }
 .mega-feature:hover img { transform: scale(1.04); }
@@ -1011,6 +1017,11 @@ body.has-sticky { padding-bottom: 68px; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .marquee-track, .stamp svg { animation: none; }
 }
+
+/* Testimonial (UX brief component; shown only with written permission) */
+.testimonial { margin: .5rem 0 0; padding: 2rem; border: 2px dashed var(--latte); border-radius: var(--radius); font-family: var(--f-serif); font-size: 1.35rem; line-height: 1.4; }
+.testimonial p { margin: 0 auto 1rem; }
+.testimonial footer { font-family: var(--f-body); font-size: .9rem; }
 
 /* ---------- Retro layer ----------
    A light 70s confectioner's grade over everything above: faded warm photos,

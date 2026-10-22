@@ -11,9 +11,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "cut",
@@ -98,6 +100,14 @@ window.PRALINE = {
    "images": [
     "assets/img/products/signature-gift-box-1",
     "assets/img/products/signature-gift-box-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Family",
+    "Partner",
+    "Client",
+    "Host"
    ]
   },
   {
@@ -110,9 +120,11 @@ window.PRALINE = {
    "contains_alcohol": true,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "5 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "cut",
@@ -202,6 +214,13 @@ window.PRALINE = {
    "images": [
     "assets/img/products/heritage-ballotin-1",
     "assets/img/products/heritage-ballotin-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Family",
+    "Host",
+    "Self Treat"
    ]
   },
   {
@@ -214,9 +233,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "4 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "cut",
@@ -283,6 +304,13 @@ window.PRALINE = {
    "images": [
     "assets/img/products/noir-ganache-collection-1",
     "assets/img/products/noir-ganache-collection-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Partner",
+    "Host",
+    "Self Treat"
    ]
   },
   {
@@ -295,9 +323,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "raspberry",
@@ -372,6 +402,13 @@ window.PRALINE = {
    "images": [
     "assets/img/products/vegan-praline-box-1",
     "assets/img/products/vegan-praline-box-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Family",
+    "Partner",
+    "Team"
    ]
   },
   {
@@ -384,9 +421,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "hazel-shells",
@@ -448,6 +487,12 @@ window.PRALINE = {
    "images": [
     "assets/img/products/noisette-praline-box-1",
     "assets/img/products/noisette-praline-box-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Family",
+    "Self Treat"
    ]
   },
   {
@@ -460,9 +505,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "4 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "mendiants",
@@ -539,6 +586,12 @@ window.PRALINE = {
    "images": [
     "assets/img/products/grand-coffret-1",
     "assets/img/products/grand-coffret-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Partner",
+    "Client"
    ]
   },
   {
@@ -551,9 +604,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "cut",
@@ -616,6 +671,12 @@ window.PRALINE = {
    "images": [
     "assets/img/products/prestige-48-1",
     "assets/img/products/prestige-48-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Client",
+    "Partner"
    ]
   },
   {
@@ -628,9 +689,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "3 weeks from dispatch",
    "storage_advice": "Keep between 12 and 16 °C. These are fresh truffles.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "truffle-bowl",
@@ -681,6 +744,13 @@ window.PRALINE = {
    "images": [
     "assets/img/products/truffle-box-1",
     "assets/img/products/truffle-box-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Host",
+    "Partner",
+    "Self Treat"
    ]
   },
   {
@@ -693,9 +763,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "4 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "heart-box",
@@ -747,6 +819,11 @@ window.PRALINE = {
    "images": [
     "assets/img/products/raspberry-ganache-hearts-1",
     "assets/img/products/raspberry-ganache-hearts-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Partner"
    ]
   },
   {
@@ -759,9 +836,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "hazel-shells",
@@ -820,6 +899,12 @@ window.PRALINE = {
    "images": [
     "assets/img/products/hazelnut-rochers-1",
     "assets/img/products/hazelnut-rochers-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Host",
+    "Team"
    ]
   },
   {
@@ -832,9 +917,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "hazelnuts",
@@ -891,6 +978,12 @@ window.PRALINE = {
    "images": [
     "assets/img/products/mendiants-1",
     "assets/img/products/mendiants-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Host",
+    "Self Treat"
    ]
   },
   {
@@ -903,9 +996,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "cream-pour",
@@ -955,6 +1050,13 @@ window.PRALINE = {
    "images": [
     "assets/img/products/salted-caramel-mini-1",
     "assets/img/products/salted-caramel-mini-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Team",
+    "Employee",
+    "Host"
    ]
   },
   {
@@ -967,9 +1069,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "gift-small",
@@ -1030,6 +1134,19 @@ window.PRALINE = {
    "images": [
     "assets/img/products/thank-you-four-1",
     "assets/img/products/thank-you-four-2"
+   ],
+   "corporate_use_case": [
+    "Employee Gifts",
+    "Event Gifts"
+   ],
+   "personalisation_available": [
+    "Branded Card",
+    "Branded Sleeve"
+   ],
+   "recipient": [
+    "Employee",
+    "Team",
+    "Client"
    ]
   },
   {
@@ -1037,14 +1154,16 @@ window.PRALINE = {
    "organic": false,
    "fairtrade": false,
    "belgian_made": true,
-   "gift_eligible": false,
+   "gift_eligible": true,
    "corporate_eligible": true,
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "12 months",
    "storage_advice": "Keep cool and dry.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "cocoa-pods",
@@ -1054,7 +1173,8 @@ window.PRALINE = {
    "title": "Noir 72% tablet",
    "product_format": "Tablet",
    "collections": [
-    "chocolate-tablets"
+    "chocolate-tablets",
+    "small-gifts"
    ],
    "chocolate_type": [
     "Dark"
@@ -1079,6 +1199,11 @@ window.PRALINE = {
    "images": [
     "assets/img/products/tablet-noir-72-1",
     "assets/img/products/tablet-noir-72-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Self Treat"
    ]
   },
   {
@@ -1086,14 +1211,16 @@ window.PRALINE = {
    "organic": false,
    "fairtrade": false,
    "belgian_made": true,
-   "gift_eligible": false,
+   "gift_eligible": true,
    "corporate_eligible": true,
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "12 months",
    "storage_advice": "Keep cool and dry.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "cocoa-tree",
@@ -1103,7 +1230,8 @@ window.PRALINE = {
    "title": "Noir 85% intense tablet",
    "product_format": "Tablet",
    "collections": [
-    "chocolate-tablets"
+    "chocolate-tablets",
+    "small-gifts"
    ],
    "chocolate_type": [
     "Dark"
@@ -1128,6 +1256,11 @@ window.PRALINE = {
    "images": [
     "assets/img/products/tablet-noir-85-1",
     "assets/img/products/tablet-noir-85-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Self Treat"
    ]
   },
   {
@@ -1135,14 +1268,16 @@ window.PRALINE = {
    "organic": false,
    "fairtrade": false,
    "belgian_made": true,
-   "gift_eligible": false,
+   "gift_eligible": true,
    "corporate_eligible": true,
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "12 months",
    "storage_advice": "Keep cool and dry.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "hazelnuts",
@@ -1152,7 +1287,8 @@ window.PRALINE = {
    "title": "Milk & roasted hazelnut tablet",
    "product_format": "Tablet",
    "collections": [
-    "chocolate-tablets"
+    "chocolate-tablets",
+    "small-gifts"
    ],
    "chocolate_type": [
     "Milk"
@@ -1180,6 +1316,11 @@ window.PRALINE = {
    "images": [
     "assets/img/products/tablet-lait-noisette-1",
     "assets/img/products/tablet-lait-noisette-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Self Treat"
    ]
   },
   {
@@ -1192,9 +1333,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "5 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "christmas",
@@ -1254,6 +1397,12 @@ window.PRALINE = {
    "images": [
     "assets/img/products/winter-spice-edition-1",
     "assets/img/products/winter-spice-edition-2"
+   ],
+   "corporate_use_case": [],
+   "personalisation_available": [],
+   "recipient": [
+    "Family",
+    "Host"
    ]
   },
   {
@@ -1266,9 +1415,11 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": false,
    "quote_only": false,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "6 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-   "delivery_lead_time": "Ships in 1–2 business days",
+   "delivery_lead_time": "Dispatch time to be confirmed (Open Decision #8)",
    "warm_weather_shipping": "Cool pack added automatically from June to September",
    "extra": [
     "logo-box",
@@ -1329,6 +1480,21 @@ window.PRALINE = {
    "images": [
     "assets/img/products/corporate-24-1",
     "assets/img/products/corporate-24-2"
+   ],
+   "corporate_use_case": [
+    "Client Gifts",
+    "Employee Gifts",
+    "Campaign Gifts"
+   ],
+   "personalisation_available": [
+    "Branded Sleeve",
+    "Branded Card",
+    "Branded Ribbon"
+   ],
+   "recipient": [
+    "Client",
+    "Employee",
+    "Team"
    ]
   },
   {
@@ -1341,6 +1507,8 @@ window.PRALINE = {
    "contains_alcohol": false,
    "logo_personalisation_available": true,
    "quote_only": true,
+   "click_and_collect_available": true,
+   "available": true,
    "shelf_life": "4 weeks from dispatch",
    "storage_advice": "Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
    "delivery_lead_time": "From 3 weeks after artwork approval",
@@ -1384,6 +1552,20 @@ window.PRALINE = {
    "images": [
     "assets/img/products/logo-pralines-1",
     "assets/img/products/logo-pralines-2"
+   ],
+   "corporate_use_case": [
+    "Client Gifts",
+    "Event Gifts",
+    "Trade Fair Gifts",
+    "Campaign Gifts"
+   ],
+   "personalisation_available": [
+    "Logo Pralines",
+    "Custom Packaging"
+   ],
+   "recipient": [
+    "Client",
+    "Employee"
    ]
   }
  ],
@@ -1394,6 +1576,7 @@ window.PRALINE = {
    "template": "Collection PLP",
    "image": "assorted",
    "filters": [
+    "availability",
     "price",
     "type",
     "chocolate",
@@ -1432,7 +1615,7 @@ window.PRALINE = {
     "size",
     "chocolate",
     "filling",
-    "conscious"
+    "alcohol"
    ],
    "intro": "Belgian pralines are filled chocolates: a thin shell around a soft centre. Ours are made in small batches and packed to order.",
    "members": [
@@ -1506,6 +1689,7 @@ window.PRALINE = {
    "image": "gift-small",
    "filters": [
     "occasion",
+    "recipient",
     "chocolate"
    ],
    "intro": "For the neighbour, the host or the colleague who covered for you. Every one comes with a gift card.",
@@ -1513,7 +1697,10 @@ window.PRALINE = {
     "hazelnut-rochers",
     "mendiants",
     "salted-caramel-mini",
-    "thank-you-four"
+    "thank-you-four",
+    "tablet-noir-72",
+    "tablet-noir-85",
+    "tablet-lait-noisette"
    ]
   },
   "premium-gifts": {
@@ -1568,6 +1755,7 @@ window.PRALINE = {
    "template": "Gift PLP",
    "image": "gift-pink",
    "filters": [
+    "recipient",
     "level",
     "price"
    ],
@@ -1587,6 +1775,7 @@ window.PRALINE = {
    "template": "Gift PLP",
    "image": "gift-small",
    "filters": [
+    "recipient",
     "level",
     "price"
    ],
@@ -1610,6 +1799,7 @@ window.PRALINE = {
    "template": "Gift PLP",
    "image": "heart-box",
    "filters": [
+    "recipient",
     "level",
     "price"
    ],
@@ -1629,6 +1819,7 @@ window.PRALINE = {
    "template": "Gift PLP",
    "image": "mendiants",
    "filters": [
+    "recipient",
     "level",
     "price"
    ],
@@ -1649,8 +1840,8 @@ window.PRALINE = {
    "template": "Vegan PLP",
    "image": "raspberry",
    "filters": [
-    "type",
-    "chocolate"
+    "vconscious",
+    "type"
    ],
    "intro": "No milk, butter, cream or honey. Same atelier, same care, same price as the classic boxes.",
    "members": [
@@ -1716,7 +1907,10 @@ window.PRALINE = {
    "script": "Order a sample, then by the hundred",
    "template": "Corporate PLP",
    "image": "open-box",
-   "filters": [],
+   "filters": [
+    "use_case",
+    "personalisation"
+   ],
    "intro": "Boxes you can order one at a time to taste, then by quote with your branding.",
    "members": [
     "thank-you-four",

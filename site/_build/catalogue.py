@@ -8,10 +8,10 @@ until the Gate 1 trading sign-off.
 STD = dict(
     vegan=False, organic=False, fairtrade=False, belgian_made=True,
     gift_eligible=True, corporate_eligible=True, contains_alcohol=False,
-    logo_personalisation_available=False, quote_only=False,
+    logo_personalisation_available=False, quote_only=False, click_and_collect_available=True, available=True,
     shelf_life="6 weeks from dispatch",
     storage_advice="Keep between 15 and 18 °C, away from light and strong smells. Not in the fridge.",
-    delivery_lead_time="Ships in 1–2 business days",
+    delivery_lead_time="Dispatch time to be confirmed (Open Decision #8)",
     warm_weather_shipping="Cool pack added automatically from June to September",
     extra=["cut", "hazelnuts"],
 )
@@ -186,34 +186,34 @@ PRODUCTS = [
     ),
     product(
         id="tablet-noir-72", title="Noir 72% tablet", product_format="Tablet",
-        collections=["chocolate-tablets"],
+        collections=["chocolate-tablets", "small-gifts"],
         chocolate_type=["Dark"], filling_type=[],
         variants=[{"label": "100 g", "piece_count": 1, "net_weight": "100 g", "price": 6.5}],
         flavour_profile="Our everyday dark: red fruit up front, roasted cocoa to finish. Three ingredients and a little vanilla.",
         ingredients="Cocoa mass, sugar, cocoa butter, natural vanilla.",
-        allergens=["May contain traces of milk and nuts"], vegan=True, gift_eligible=False,
+        allergens=["May contain traces of milk and nuts"], vegan=True,
         occasion=[], gift_level="Small Attention", shelf_life="12 months", storage_advice="Keep cool and dry.",
         extra=["cocoa-pods", "beans-bar"], flavours=[],
     ),
     product(
         id="tablet-noir-85", title="Noir 85% intense tablet", product_format="Tablet",
-        collections=["chocolate-tablets"],
+        collections=["chocolate-tablets", "small-gifts"],
         chocolate_type=["Dark"], filling_type=[],
         variants=[{"label": "100 g", "piece_count": 1, "net_weight": "100 g", "price": 7}],
         flavour_profile="Deep and dry, with notes of black tea and toasted bread. For people who take their coffee black.",
         ingredients="Cocoa mass, cocoa butter, sugar.",
-        allergens=["May contain traces of milk and nuts"], vegan=True, gift_eligible=False,
+        allergens=["May contain traces of milk and nuts"], vegan=True,
         occasion=[], gift_level="Small Attention", shelf_life="12 months", storage_advice="Keep cool and dry.",
         extra=["cocoa-tree", "beans-bar"], flavours=[],
     ),
     product(
         id="tablet-lait-noisette", title="Milk & roasted hazelnut tablet", product_format="Tablet",
-        collections=["chocolate-tablets"],
+        collections=["chocolate-tablets", "small-gifts"],
         chocolate_type=["Milk"], filling_type=["Nut"],
         variants=[{"label": "100 g", "piece_count": 1, "net_weight": "100 g", "price": 6.5}],
         flavour_profile="Creamy 38% milk chocolate packed with whole roasted hazelnuts.",
         ingredients="Sugar, cocoa butter, whole milk powder, hazelnuts (20%), cocoa mass, emulsifier (sunflower lecithin).",
-        allergens=["Milk", "Hazelnut"], gift_eligible=False,
+        allergens=["Milk", "Hazelnut"],
         occasion=[], gift_level="Small Attention", shelf_life="12 months", storage_advice="Keep cool and dry.",
         extra=["hazelnuts", "hazel-shells"], flavours=[],
     ),
@@ -254,27 +254,54 @@ PRODUCTS = [
     ),
 ]
 
+# Filter data that filter_matrix_by_collection.csv reads but the metafield schema
+# doesn't define yet (recipient, corporate_use_case, personalisation_available).
+FILTER_DATA = {
+    "signature-gift-box":       dict(recipient=["Family", "Partner", "Client", "Host"]),
+    "heritage-ballotin":        dict(recipient=["Family", "Host", "Self Treat"]),
+    "noir-ganache-collection":  dict(recipient=["Partner", "Host", "Self Treat"]),
+    "vegan-praline-box":        dict(recipient=["Family", "Partner", "Team"]),
+    "noisette-praline-box":     dict(recipient=["Family", "Self Treat"]),
+    "grand-coffret":            dict(recipient=["Partner", "Client"]),
+    "prestige-48":              dict(recipient=["Client", "Partner"]),
+    "truffle-box":              dict(recipient=["Host", "Partner", "Self Treat"]),
+    "raspberry-ganache-hearts": dict(recipient=["Partner"]),
+    "hazelnut-rochers":         dict(recipient=["Host", "Team"]),
+    "mendiants":                dict(recipient=["Host", "Self Treat"]),
+    "salted-caramel-mini":      dict(recipient=["Team", "Employee", "Host"]),
+    "thank-you-four":           dict(recipient=["Employee", "Team", "Client"], corporate_use_case=["Employee Gifts", "Event Gifts"], personalisation_available=["Branded Card", "Branded Sleeve"]),
+    "tablet-noir-72":           dict(recipient=["Self Treat"]),
+    "tablet-noir-85":           dict(recipient=["Self Treat"]),
+    "tablet-lait-noisette":     dict(recipient=["Self Treat"]),
+    "winter-spice-edition":     dict(recipient=["Family", "Host"]),
+    "corporate-24":             dict(recipient=["Client", "Employee", "Team"], corporate_use_case=["Client Gifts", "Employee Gifts", "Campaign Gifts"], personalisation_available=["Branded Sleeve", "Branded Card", "Branded Ribbon"]),
+    "logo-pralines":            dict(recipient=["Client", "Employee"], corporate_use_case=["Client Gifts", "Event Gifts", "Trade Fair Gifts", "Campaign Gifts"], personalisation_available=["Logo Pralines", "Custom Packaging"]),
+}
+for _p in PRODUCTS:
+    _p.update({"corporate_use_case": [], "personalisation_available": [], **FILTER_DATA[_p["id"]]})
+
 # Collection handles and copy, in Sitemap sheet order.
+# filters: groups from filter_matrix_by_collection.csv (assets/js/app.js FILTERS).
 # rule: "explicit" (product.collections), or a function name the build evaluates.
 COLLECTIONS = {
-    "all":                    dict(title="All chocolates", script="Every box, bar and ballotin", rule="all", template="Collection PLP", image="assorted", filters=["price", "type", "chocolate", "conscious"], intro="The full counter: pralines, ballotins, truffles, tablets and seasonal boxes."),
-    "pralines-and-truffles":  dict(title="Pralines & truffles", script="Filled, enrobed, finished by hand", rule="explicit", template="Collection PLP", image="rows", filters=["price", "size", "chocolate", "filling", "conscious"], intro="Belgian pralines are filled chocolates: a thin shell around a soft centre. Ours are made in small batches and packed to order."),
+    "all":                    dict(title="All chocolates", script="Every box, bar and ballotin", rule="all", template="Collection PLP", image="assorted", filters=["availability", "price", "type", "chocolate", "conscious"], intro="The full counter: pralines, ballotins, truffles, tablets and seasonal boxes."),
+    "pralines-and-truffles":  dict(title="Pralines & truffles", script="Filled, enrobed, finished by hand", rule="explicit", template="Collection PLP", image="rows", filters=["price", "size", "chocolate", "filling", "alcohol"], intro="Belgian pralines are filled chocolates: a thin shell around a soft centre. Ours are made in small batches and packed to order."),
     "ballotins":              dict(title="Ballotins", script="Chosen by weight, the Belgian way", rule="explicit", template="Collection PLP", image="assorted-beige", filters=["size", "chocolate"], intro="The folded paper box from the chocolate shop counter, in 250 g, 500 g and 1 kg."),
     "gift-boxes":             dict(title="Praline gift boxes", script="12, 24 or 36, ready to give", rule="explicit", template="Collection PLP", image="premium-box", filters=["price", "size", "chocolate"], chips="occasion", intro="Our most-given boxes. Every one ships with a free printed gift card and no prices inside."),
     "chocolate-tablets":      dict(title="Chocolate tablets", script="For the cart, or for you", rule="explicit", template="Collection PLP", image="tablets-stack", filters=["chocolate", "conscious"], intro="100 g bars of the couverture we use in our pralines. Two of the three are vegan."),
-    "small-gifts":            dict(title="Small attentions", script="Under €25, still a proper gift", rule="explicit", template="Collection PLP", image="gift-small", filters=["occasion", "chocolate"], intro="For the neighbour, the host or the colleague who covered for you. Every one comes with a gift card."),
+    "small-gifts":            dict(title="Small attentions", script="Under €25, still a proper gift", rule="explicit", template="Collection PLP", image="gift-small", filters=["occasion", "recipient", "chocolate"], intro="For the neighbour, the host or the colleague who covered for you. Every one comes with a gift card."),
     "premium-gifts":          dict(title="Premium gifts", script="For the moments that count", rule="explicit", template="Collection PLP", image="red-box", filters=["price", "chocolate"], intro="Two-layer coffrets, a full kilo ballotin and our stamped prestige squares."),
     "belgian-classics":       dict(title="Belgian classics", script="The counter favourites", rule="explicit", template="Collection PLP", image="grand-place", filters=["type", "chocolate", "filling"], intro="Ballotins, pralinés, truffles and mendiants: the pieces Belgian chocolate shops have sold for generations."),
     "seasonal-drops":         dict(title="Seasonal drops", script="Here for a short while", rule="explicit", template="Collection PLP", image="christmas", filters=[], seasonal=True, intro="Small-batch flavours for Christmas, Easter and Valentine’s Day. When they’re gone, they’re gone."),
-    "birthday-gifts":         dict(title="Birthday gifts", script="Something better than a card", rule="occasion:Birthday", template="Gift PLP", image="gift-pink", filters=["level", "price"], intro="Boxes that arrive on the day, with your message printed on a card inside."),
-    "thank-you-gifts":        dict(title="Thank you gifts", script="Say it properly", rule="occasion:Thank You", template="Gift PLP", image="gift-small", filters=["level", "price"], intro="From a €9 slim box to a two-layer coffret. Popular with teams and clients too."),
-    "love-and-romance":       dict(title="Love & romance", script="For the one who gets the last piece", rule="occasion:Love", template="Gift PLP", image="heart-box", filters=["level", "price"], intro="Dark ganaches, raspberry hearts and the grand coffret. Valentine’s boxes arrive in late January."),
-    "dinner-party-gifts":     dict(title="Dinner party gifts", script="Bring something better than wine", rule="occasion:Dinner Party", template="Gift PLP", image="mendiants", filters=["level", "price"], intro="Host gifts that go straight on the table with coffee."),
-    "vegan-chocolates":       dict(title="Vegan chocolates", script="Not a compromise shelf", rule="vegan", template="Vegan PLP", image="raspberry", filters=["type", "chocolate"], intro="No milk, butter, cream or honey. Same atelier, same care, same price as the classic boxes."),
+    "birthday-gifts":         dict(title="Birthday gifts", script="Something better than a card", rule="occasion:Birthday", template="Gift PLP", image="gift-pink", filters=["recipient", "level", "price"], intro="Boxes that arrive on the day, with your message printed on a card inside."),
+    "thank-you-gifts":        dict(title="Thank you gifts", script="Say it properly", rule="occasion:Thank You", template="Gift PLP", image="gift-small", filters=["recipient", "level", "price"], intro="From a €9 slim box to a two-layer coffret. Popular with teams and clients too."),
+    "love-and-romance":       dict(title="Love & romance", script="For the one who gets the last piece", rule="occasion:Love", template="Gift PLP", image="heart-box", filters=["recipient", "level", "price"], intro="Dark ganaches, raspberry hearts and the grand coffret. Valentine’s boxes arrive in late January."),
+    "dinner-party-gifts":     dict(title="Dinner party gifts", script="Bring something better than wine", rule="occasion:Dinner Party", template="Gift PLP", image="mendiants", filters=["recipient", "level", "price"], intro="Host gifts that go straight on the table with coffee."),
+    "vegan-chocolates":       dict(title="Vegan chocolates", script="Not a compromise shelf", rule="vegan", template="Vegan PLP", image="raspberry", filters=["vconscious", "type"], intro="No milk, butter, cream or honey. Same atelier, same care, same price as the classic boxes."),
     "organic-chocolate":      dict(title="Organic chocolate", script="Certified, or not listed", rule="organic", template="Collection PLP", image="cocoa-pods", filters=[], claim="organic", intro="This page lists only products with an organic certificate for that exact product."),
     "fairtrade-chocolate":    dict(title="Fairtrade chocolate", script="Certified, or not listed", rule="fairtrade", template="Collection PLP", image="cocoa-hands", filters=[], claim="Fairtrade", intro="This page lists only products made with certified Fairtrade cocoa."),
     "no-alcohol-chocolates":  dict(title="No alcohol chocolates", script="Every piece alcohol-free", rule="no-alcohol", template="Collection PLP", image="cups", filters=["price", "type", "chocolate"], intro="No liqueur and no alcohol-based flavourings. Safe to send to anyone who doesn’t drink."),
-    "corporate-gifts":        dict(title="Corporate gift boxes", script="Order a sample, then by the hundred", rule="explicit", template="Corporate PLP", image="open-box", filters=[], intro="Boxes you can order one at a time to taste, then by quote with your branding."),
+    "corporate-gifts":        dict(title="Corporate gift boxes", script="Order a sample, then by the hundred", rule="explicit", template="Corporate PLP", image="open-box", filters=["use_case", "personalisation"], intro="Boxes you can order one at a time to taste, then by quote with your branding."),
 }
 
 

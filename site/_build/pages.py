@@ -9,7 +9,7 @@ from components import (ICON, btn, crumbs, doodle, drip, faq, figure, head_row, 
 # Shared FAQ content, reused on /pages/faq and topic pages.
 FAQ = {
     "Shipping": [
-        ("How long does delivery take?", "<p>In Belgium, usually 1–2 working days after dispatch. Orders placed before 14:00 on a working day leave the atelier the next working day. See <a class='link' href='{shipping}'>shipping & delivery</a> for other countries.</p>"),
+        ("How long does delivery take?", "<p>Delivery times by country are being confirmed against our warm-weather rules. <span class='placeholder-note'>Pending Open Decision #8</span> Orders placed before 14:00 on a working day leave the atelier the next working day. See <a class='link' href='{shipping}'>shipping & delivery</a> for other countries.</p>"),
         ("Do you ship when it’s hot?", "<p>Yes, with an insulated liner and cool packs. When the forecast on the route is too warm, we hold the order and email you a new dispatch date. <a class='link' href='{warm}'>Read the warm-weather policy</a>.</p>"),
         ("Can I choose a delivery date?", "<p>Yes. Pick a date in the cart and we’ll plan dispatch so it arrives on time, weather permitting. The <a class='link' href='{calendar}'>delivery calendar</a> shows the cut-offs for holidays.</p>"),
     ],
@@ -396,11 +396,19 @@ def corporate_gifting():
 <section class="section"><div class="wrap">{head_row("What it’s for", "Pick the occasion")}{corp_usecases()}</div></section>
 <section class="section section--butter grain" id="formats"><div class="wrap">{head_row("Personalisation", "Four ways to make it yours")}{corp_formats()}</div></section>
 <section class="section"><div class="wrap">{head_row("How it works", "From request to delivery")}{corp_process()}</div></section>
+{trust_strip([("calendar", "Delivered on your date", "Chosen when you request a quote"), ("snow", "Packed to travel cool", "Insulated liner on every box"),
+              ("truck", "Tracked parcels", "One tracking link per delivery"), ("shield", "Arrives right", "Or we replace it")])}
+<section class="section"><div class="wrap narrow center">
+  <p class="script">What clients say</p>
+  <blockquote class="testimonial"><p>Client testimonial and logos appear here once we hold written permission to use them.</p>
+  <footer><span class="placeholder-note">Placeholder: needs written permission (checklist #24)</span></footer></blockquote>
+</div></section>
 {marquee(["Logo pralines", "Branded sleeves", "Cards & ribbons", "Multi-address delivery", "Invoice payment"], "marquee--slim")}
 <section class="section"><div class="wrap">{rail("corporate-gifts", "corp-rail", 8, "Taste before you order", "Corporate gift boxes", ("All corporate boxes", "/collections/corporate-gifts"))}</div></section>
 <section class="section section--ganache on-dark"><div class="wrap quote-layout">
   <div><p class="script">Request a quote</p><h2 class="h2">Get a quote and a sample pack</h2><p class="lead">This doesn’t place an order or take payment. We reply by email within two working days.</p>
   {ticks(["Quotes from 25 boxes", "Logo pralines from 100 pieces", "Invoice payment for registered companies"])}
+  <p class="small"><span class="placeholder-note">Multi-address delivery and invoicing pending Open Decision #6</span></p>
   <p class="small">Rather talk it through? Email <a href="mailto:corporate@example.com">corporate@example.com</a>.</p></div>
   {quote_form()}
 </div></section>
@@ -457,7 +465,7 @@ def corp_usecase_page(kind):
 <section class="section"><div class="wrap">{head_row("Personalisation", "Make it yours")}{corp_formats()}</div></section>
 <section class="section section--ganache on-dark"><div class="wrap quote-layout">
   <div><p class="script">Request a quote</p><h2 class="h2">Tell us about your {data["t"].lower()}</h2><p class="lead">We reply within two working days with a written quote and a sample pack.</p>{figure("rows", "", "round")}</div>
-  {quote_form("Quote for " + data["t"].lower(), "Client gifts" if kind == "client" else "Employee gifts")}
+  {quote_form("Quote for " + data["t"].lower(), "Client Gifts" if kind == "client" else "Employee Gifts")}
 </div></section>'''
 
 
@@ -561,7 +569,7 @@ def ingredients():
 <section class="section section--butter grain"><div class="wrap split-2">
   <div><p class="script">What we leave out</p><h2 class="h2">Not in our chocolate</h2>
     {ticks(["Vegetable fats in the couverture", "Artificial flavours: we use vanilla pods, spices and fruit", "Preservatives: freshness comes from small batches and cool storage", "Palm oil in fillings"])}
-    <p class="small muted">Claims on this page apply to the whole range. Product-level claims like vegan appear as badges only where they apply.</p></div>
+    <p class="small muted">Claims on this page apply to the whole range. Product-level claims like vegan appear as badges only where they apply. <span class="placeholder-note">“No palm oil” needs supplier proof (Open Decision #4)</span></p></div>
   <div><p class="script">Reading a label</p><h2 class="h2">How we list ingredients</h2>
     <p>Ingredients appear in order of weight, with allergens named in the allergen line. "May contain" warnings cover traces from shared equipment in our atelier.</p>
     {btn("See the allergen guide", "/pages/allergens", "btn")}</div>
@@ -570,7 +578,7 @@ def ingredients():
 
 
 def organic_and_fairtrade():
-    return f'''{page_hero([("Vegan & Conscious", "/collections/vegan-chocolates"), ("Organic & Fairtrade", None)], "Preuves & certificats", "Organic and Fairtrade, only with proof",
+    return f'''{page_hero([("Our Chocolate", "/pages/belgian-pralines"), ("Organic & Fairtrade", None)], "Preuves & certificats", "Organic and Fairtrade, only with proof",
         "We’d rather say less and be sure of it. This page explains when we use these words, and what we can show you today.",
         "", "cocoa-pods", "Cocoa pods growing on a tree", "pistachio")}
 {wave("var(--cream)", "#DCE8DA")}
@@ -640,7 +648,7 @@ def allergens():
 # Service pages
 # =====================================================================
 def shipping():
-    rows = [("Belgium", "Standard", "1–2 working days after dispatch", "€6.90, free from €60"), ("Belgium", "Express", "Next working day", "€12.90"),
+    rows = [("Belgium", "Standard", '<span class="placeholder-note">To confirm (Open Decision #8)</span>', "€6.90, free from €60"), ("Belgium", "Express", "Next working day", "€12.90"),
             ("Netherlands, Luxembourg", "Standard", "2–3 working days", "€9.90"), ("France, Germany", "Standard", "2–4 working days", "€12.90"),
             ("Brussels atelier", "Click & collect", "Same day if ordered by 12:00", "Free")]
     table = "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>" for a, b, c, d in rows)
@@ -780,7 +788,7 @@ def stories():
 def article_store():
     return f'''<article>
 <header class="article-head"><div class="wrap narrow center">
-  {crumbs([("Stories", "/blogs/stories"), ("How to store pralines", None)])}
+  {crumbs([("Our Chocolate", "/pages/belgian-pralines"), ("Stories", "/blogs/stories"), ("How to store pralines", None)])}
   <span class="tag">Product care · 4 min read</span>
   <h1 class="h1">How to store pralines</h1>
   <p class="lead" style="margin-inline:auto">Cool, dark and not in the fridge. Here’s how to keep a box at its best, from the day it arrives to the last piece.</p>
@@ -889,7 +897,7 @@ def checkout():
         <div class="field full"><label for="co-country">Country</label><select class="input" id="co-country" autocomplete="country-name"><option>Belgium</option><option>Netherlands</option><option>Luxembourg</option><option>France</option><option>Germany</option></select></div>
       </div>
       <h2>Delivery</h2>
-      <label class="ship-opt"><span><input type="radio" name="ship" value="standard" checked> <b>Standard</b><br><span class="small muted">1–2 working days in Belgium</span></span><span id="std-label"></span></label>
+      <label class="ship-opt"><span><input type="radio" name="ship" value="standard" checked> <b>Standard</b><br><span class="small muted">Delivery time to be confirmed (Open Decision #8)</span></span><span id="std-label"></span></label>
       <label class="ship-opt"><span><input type="radio" name="ship" value="express"> <b>Express</b><br><span class="small muted">Next working day, best in warm weather</span></span><span id="exp-label"></span></label>
       <label class="ship-opt"><span><input type="radio" name="ship" value="pickup"> <b>Click & collect at the atelier</b><br><span class="small muted">Brussels, Tuesday–Saturday</span></span><span>Free</span></label>
       <div class="form-grid" style="margin-top:1rem"><div class="field"><label for="co-date">Preferred delivery date</label><input class="input" id="co-date" type="date"></div></div>

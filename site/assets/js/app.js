@@ -20,16 +20,25 @@
     blackout: ["12-24", "12-25", "12-26", "12-31", "01-01"], // MM-DD, no dispatch
   };
 
+  /* Groups and values from filter_matrix_by_collection.csv; each collection picks its groups in catalogue.py. */
   const FILTERS = {
-    price:     { label: "Price", values: ["Under €25", "€25–50", "€50–100", "€100+"] },
-    type:      { label: "Product type", values: ["Gift box", "Ballotin", "Truffles", "Tablet", "Small treat", "Premium gift"] },
-    chocolate: { label: "Chocolate", values: ["Dark", "Milk", "White"] },
-    filling:   { label: "Filling", values: ["Praliné", "Ganache", "Caramel", "Cream", "Marzipan", "Fruit", "Nut", "Truffle"] },
-    size:      { label: "Box size", values: ["12 pcs", "24 pcs", "36 pcs", "250 g", "500 g", "1 kg"] },
-    conscious: { label: "Conscious choices", values: ["Vegan", "No alcohol", "Belgian made"] },
-    occasion:  { label: "Occasion", values: ["Birthday", "Thank You", "Love", "Dinner Party", "Wedding", "Seasonal"] },
-    level:     { label: "Gift level", values: ["Small Attention", "Proper Gift", "Premium Gift", "Corporate Ready"] },
+    availability:    { label: "Availability", values: ["In stock", "Out of stock"] },
+    price:           { label: "Price", values: ["Under €25", "€25–€50", "€50–€100", "€100+"] },
+    type:            { label: "Product type", values: ["Pralines", "Truffles", "Ballotins", "Gift Boxes", "Tablets", "Small Treats", "Premium Gifts"] },
+    chocolate:       { label: "Chocolate type", values: ["Dark", "Milk", "White", "Mixed"] },
+    conscious:       { label: "Conscious choices", values: ["Vegan", "Organic", "Fairtrade", "No alcohol", "Belgian made"] },
+    size:            { label: "Box size", values: ["12 pieces", "24 pieces", "36 pieces", "250g", "500g", "1kg"] },
+    filling:         { label: "Filling", values: ["Praliné", "Ganache", "Caramel", "Cream", "Marzipan", "Fruit", "Nut", "Truffle"] },
+    alcohol:         { label: "Alcohol", values: ["No alcohol", "Contains alcohol"] },
+    occasion:        { label: "Occasion", values: ["Birthday", "Thank You", "Love", "Dinner Party", "Wedding", "Seasonal"] },
+    recipient:       { label: "Recipient", values: ["Client", "Employee", "Team", "Host", "Partner", "Family", "Self Treat"] },
+    level:           { label: "Gift level", values: ["Small Attention", "Proper Gift", "Premium Gift", "Corporate Ready"] },
+    vconscious:      { label: "Conscious choices", values: ["Vegan", "Organic", "Fairtrade", "No alcohol", "Dark Chocolate", "Fruit & Nut"] },
+    use_case:        { label: "Use case", values: ["Client Gifts", "Employee Gifts", "Event Gifts", "Trade Fair Gifts", "Campaign Gifts"] },
+    personalisation: { label: "Personalisation", values: ["Logo Pralines", "Branded Sleeve", "Branded Card", "Branded Ribbon", "Custom Packaging"] },
   };
+  const TYPE = { "Truffles": "Truffles", "Ballotins": "Ballotin", "Gift Boxes": "Gift box", "Tablets": "Tablet", "Small Treats": "Small treat", "Premium Gifts": "Premium gift" };
+  const SIZE = { "12 pieces": "12 pcs", "24 pieces": "24 pcs", "36 pieces": "36 pcs", "250g": "250 g", "500g": "500 g", "1kg": "1 kg" };
 
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -42,23 +51,30 @@
   const pimg = (p, i = 0, sm = false) => `${ROOT}${p.images[i]}${sm ? "-sm" : ""}.jpg`;
   const eimg = (key) => `${ROOT}assets/img/${key}.jpg`;
   const fromPrice = (p) => Math.min(...p.variants.map((v) => v.price ?? Infinity));
-  const priceBand = (n) => n == null ? null : n < 25 ? "Under €25" : n < 50 ? "€25–50" : n < 100 ? "€50–100" : "€100+";
+  const priceBand = (n) => n == null ? null : n < 25 ? "Under €25" : n < 50 ? "€25–€50" : n < 100 ? "€50–€100" : "€100+";
 
   function matches(p, group, value) {
     switch (group) {
       case "price": return p.variants.some((v) => priceBand(v.price) === value);
-      case "type": return p.product_format === value;
-      case "chocolate": return p.chocolate_type.includes(value);
+      case "availability": return value === "In stock" ? p.available : !p.available;
+      case "type": return value === "Pralines" ? p.collections.includes("pralines-and-truffles") && p.product_format !== "Truffles" : p.product_format === TYPE[value];
+      case "chocolate": return value === "Mixed" ? p.chocolate_type.length > 1 : p.chocolate_type.includes(value);
       case "filling": return p.filling_type.includes(value);
-      case "size": return p.variants.some((v) => v.label.includes(value));
-      case "conscious": return value === "Vegan" ? p.vegan : value === "No alcohol" ? !p.contains_alcohol : value === "Belgian made" ? p.belgian_made : false;
+      case "size": return p.variants.some((v) => v.label === SIZE[value]);
+      case "alcohol": return value === "Contains alcohol" ? p.contains_alcohol : !p.contains_alcohol;
+      case "conscious":
+      case "vconscious": return ({ "Vegan": p.vegan, "Organic": p.organic, "Fairtrade": p.fairtrade, "No alcohol": !p.contains_alcohol, "Belgian made": p.belgian_made,
+        "Dark Chocolate": p.chocolate_type.includes("Dark"), "Fruit & Nut": p.filling_type.includes("Fruit") || p.filling_type.includes("Nut") })[value] || false;
       case "occasion": return p.occasion.includes(value);
+      case "recipient": return p.recipient.includes(value);
       case "level": return p.gift_level === value;
+      case "use_case": return p.corporate_use_case.includes(value);
+      case "personalisation": return p.personalisation_available.includes(value);
     }
     return false;
   }
 
-  /* GA4 recommended event names where one exists (analysis §9). */
+  /* Event names from ga4_event_tracking_plan.csv (14 events), plus a few helpers it doesn't list. */
   window.dataLayer = window.dataLayer || [];
   const track = (event, data = {}) => window.dataLayer.push({ event, ...data });
 
@@ -263,18 +279,27 @@
       const handle = document.body.dataset.collection;
       const col = collections[handle];
       const base = col.members.map(get);
-      const urlKeys = ["occasion", "level", "chocolate"];
       const active = {};
-      col.filters.forEach((g) => { active[g] = new Set(); });
-      urlKeys.forEach((g) => { if (params.get(g) && active[g]) active[g].add(params.get(g)); });
+      col.filters.forEach((g) => { active[g] = new Set(params.getAll(`filter.${g}`)); });
+      const syncUrl = () => {
+        const q = new URLSearchParams();
+        Object.entries(active).forEach(([g, set]) => set.forEach((v) => q.append(`filter.${g}`, v)));
+        history.replaceState(null, "", q.toString() ? `?${q}` : location.pathname);
+        // Filtered URLs: canonical stays on the parent collection and robots noindex is added.
+        const robots = $('meta[name="robots"][data-filter]');
+        if (q.toString() && !robots && !$('meta[name="robots"]')) document.head.insertAdjacentHTML("beforeend", '<meta name="robots" content="noindex, follow" data-filter>');
+        if (!q.toString()) robots?.remove();
+      };
 
       const filterHTML = (prefix) => col.filters.map((g) => {
-        const vals = FILTERS[g].values.filter((v) => base.some((p) => matches(p, g, v)));
+        // Availability always lists both states (filter matrix: broad pages); other groups hide empty values.
+        const always = g === "availability";
+        const vals = always ? FILTERS[g].values : FILTERS[g].values.filter((v) => base.some((p) => matches(p, g, v)));
         if (vals.length < 2) return "";
         return `<fieldset><legend>${FILTERS[g].label}</legend>${vals.map((v) => {
           const n = base.filter((p) => matches(p, g, v)).length;
           const id = `${prefix}-${g}-${v}`.replace(/[^a-z0-9-]/gi, "");
-          return `<label class="check" for="${id}"><input type="checkbox" id="${id}" data-g="${g}" value="${esc(v)}" ${active[g].has(v) ? "checked" : ""}><span>${esc(v)}</span><span class="count">${n}</span></label>`;
+          return `<label class="check" for="${id}"><input type="checkbox" id="${id}" data-g="${g}" value="${esc(v)}" ${active[g].has(v) ? "checked" : ""}${n ? "" : " disabled"}><span>${esc(v)}</span><span class="count">${n}</span></label>`;
         }).join("")}</fieldset>`;
       }).join("");
 
@@ -300,6 +325,7 @@
         $("#active").innerHTML = Object.entries(active).flatMap(([g, set]) => [...set].map((v) => `<button data-g="${g}" data-v="${esc(v)}" aria-label="Remove filter ${esc(v)}">${esc(v)} ✕</button>`)).join("");
         $("#clear-all")?.addEventListener("click", clear);
         $$("input[data-g]").forEach((i) => { i.checked = active[i.dataset.g].has(i.value); });
+        syncUrl();
       }
       function clear() { Object.values(active).forEach((s) => s.clear()); apply(); }
       document.addEventListener("change", (e) => {
@@ -313,7 +339,7 @@
       $("#filters-clear")?.addEventListener("click", clear);
       sortSel.addEventListener("change", apply);
       apply();
-      track("view_item_list", { item_list_id: handle, item_list_name: col.title });
+      track("view_collection", { item_list_id: handle, item_list_name: col.title });
 
       // Vegan PLP: claim tiles appear only when a product in the collection carries the claim (checklist #19–20).
       const claims = $("#claims");
@@ -446,7 +472,7 @@
       rail($("#related"), [...new Set(related)], "pdp_related");
       refresh();
       drawGallery();
-      track("view_item", { currency: "EUR", value: v().price, items: [{ item_id: p.id, item_name: p.title }] });
+      track("view_product", { currency: "EUR", value: v().price, items: [{ item_id: p.id, item_name: p.title }] });
     },
 
     calendar() {
@@ -524,7 +550,8 @@
       if (!q) { $("#search-count").textContent = "Type a flavour, format or occasion."; return; }
       const t = q.toLowerCase();
       const hits = products.filter((p) => [p.title, p.flavour_profile, p.product_format, ...p.chocolate_type, ...p.filling_type, ...p.occasion, ...p.variants.map((v) => v.label), p.vegan ? "vegan" : "", p.quote_only ? "logo corporate" : ""].join(" ").toLowerCase().includes(t));
-      track(hits.length ? "search" : "no_results", { search_term: q });
+      track("search_used", { search_term: q, results: hits.length });
+      if (!hits.length) track("no_results", { search_term: q });
       $("#search-count").textContent = `${hits.length} ${hits.length === 1 ? "result" : "results"}`;
       $("#search-grid").innerHTML = hits.length ? hits.map((p) => card(p, "search")).join("") : `<div class="empty" style="grid-column:1/-1"><p class="script">No matches for “${esc(q)}”</p><p>Try a flavour like hazelnut or caramel, or browse everything.</p><a class="btn btn-full" href="${link("/collections/all")}">All chocolates</a></div>`;
     },
@@ -533,11 +560,12 @@
       const lines = cart.lines;
       if (!lines.length) { $("#checkout").innerHTML = `<div class="empty" style="grid-column:1/-1"><p class="script">Your box is empty</p><p>Add something before checking out.</p><a class="btn btn-full" href="${link("/collections/gift-boxes")}">Shop gift boxes</a></div>`; return; }
       const sub = cart.subtotal();
-      track("begin_checkout", { currency: "EUR", value: sub });
+      track("checkout_started", { currency: "EUR", value: sub, location: "checkout" });
       const meta = cart.meta;
       $("#co-msg").value = meta.message || "";
       $("#co-date").min = isoDate(nextBusinessDays(2));
       $("#co-date").value = meta.date || "";
+      $("#co-date").addEventListener("change", (e) => track("delivery_date_selected", { location: "checkout", date: e.target.value }));
       function totals() {
         const ship = $("input[name=ship]:checked").value;
         const cost = ship === "pickup" ? 0 : sub >= RULES.freeShippingFrom && ship === "standard" ? 0 : RULES.shipping[ship];
@@ -602,7 +630,7 @@
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         if (!validate(form)) return;
-        if (form.matches("[data-quote-form]")) track("generate_lead", { lead_type: "corporate_quote", quantity: $("#q-qty", form)?.value, use_case: $("#q-use", form)?.value });
+        if (form.matches("[data-quote-form]")) track("quote_form_submitted", { lead_type: "corporate_quote", quantity: $("#q-qty", form)?.value, use_case: $("#q-use", form)?.value });
         else track("logo_uploaded", { lead_type: "artwork" });
         form.hidden = true;
         const ok = form.parentElement.querySelector(".success");
@@ -630,7 +658,7 @@
     const sel = e.target.closest("[data-select]");
     if (sel) track("select_item", { item_list_id: sel.dataset.list, items: [{ item_id: sel.dataset.select }] });
     if (e.target.closest("[data-quote]")) track("corporate_quote_clicked", { location: document.body.dataset.page });
-    if (e.target.closest("[data-checkout]")) track("begin_checkout", { value: cart.subtotal() });
+    if (e.target.closest("[data-checkout]")) track("checkout_started", { value: cart.subtotal(), location: "cart" });
   });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawers(); });
 

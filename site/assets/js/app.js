@@ -699,6 +699,28 @@
   phone.addEventListener("change", footCols);
   $$(".foot-col summary").forEach((s) => s.addEventListener("click", (e) => { if (!phone.matches) e.preventDefault(); }));
 
+  // EN | NL: English is the source. Dutch is machine-translated by Google Translate until a
+  // reviewed Dutch catalogue exists; its script loads only for visitors who pick NL.
+  const lang = /googtrans=\/en\/nl/.test(document.cookie) ? "nl" : "en";
+  $$("[data-lang]").forEach((b) => {
+    b.setAttribute("aria-pressed", b.dataset.lang === lang);
+    b.addEventListener("click", () => {
+      if (b.dataset.lang === lang) return;
+      const value = b.dataset.lang === "nl" ? "/en/nl" : "";
+      const expires = value ? "" : ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      // Google may also set the cookie on the parent domain, so clear both.
+      ["", `;domain=${location.hostname}`, `;domain=.${location.hostname}`].forEach((d) => { document.cookie = `googtrans=${value};path=/${d}${expires}`; });
+      track("language_switched", { language: b.dataset.lang });
+      location.reload();
+    });
+  });
+  if (lang === "nl") {
+    window.gtInit = () => new google.translate.TranslateElement({ pageLanguage: "en", includedLanguages: "nl", autoDisplay: false }, "gt");
+    const s = document.createElement("script");
+    s.src = "https://translate.google.com/translate_a/element.js?cb=gtInit";
+    document.head.append(s);
+  }
+
   dropzones();
   leadForms();
   pages[document.body.dataset.page]?.();

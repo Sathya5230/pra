@@ -145,7 +145,7 @@ MARK = "assets/img/brand/mark.png"  # crowned cacao pod, stamped on every pralin
 
 def logo(tag="a", mark=True):
     m = f'<img class="logo-mark" src="{u(MARK)}" alt="" width="173" height="320">' if mark else ""
-    return f'<a class="logo" href="{u("/")}" aria-label="{BRAND} home">{m}<span class="logo-word"><b>{BRAND}</b><i>chocolatier à Bruxelles</i></span></a>'
+    return f'<a class="logo" href="{u("/")}" aria-label="{BRAND} home" translate="no">{m}<span class="logo-word"><b>{BRAND}</b><i>chocolatier à Bruxelles</i></span></a>'
 
 
 def crest():
@@ -173,6 +173,13 @@ def head(title, desc, canonical, noindex=False, extra=""):
   <link rel="stylesheet" href="{u('assets/css/styles.css')}">
   {extra}
 </head>'''
+
+
+def lang_toggle(cls=""):
+    """EN | NL switch. English is the source; app.js machine-translates to Dutch on request."""
+    return f'''<div class="lang {cls}" role="group" aria-label="Language" translate="no">
+    <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+    <button type="button" data-lang="nl" lang="nl" aria-label="Nederlands" aria-pressed="false">NL</button></div>'''
 
 
 def header(active=""):
@@ -203,6 +210,7 @@ def header(active=""):
   {logo()}
   <nav class="nav" aria-label="Main"><ul>{"".join(items)}</ul></nav>
   <div class="tools">
+    {lang_toggle("hide-s")}
     <button class="icon-btn" data-open="search" aria-label="Search">{ICON["search"]}</button>
     <a class="icon-btn hide-s" href="{u("/pages/contact")}" aria-label="Contact">{ICON["user"]}</a>
     <button class="icon-btn" data-open="cart" aria-label="Open cart">{ICON["bag"]}<span class="cart-count" aria-live="polite"></span></button>
@@ -212,8 +220,9 @@ def header(active=""):
 <aside class="drawer drawer--left" id="menu" aria-label="Menu" aria-hidden="true">
   <div class="drawer-head">{logo()}<button class="icon-btn" data-close aria-label="Close menu">{ICON["close"]}</button></div>
   <div class="drawer-body mobile-nav">{mobile}</div>
-  <div class="drawer-foot"><a class="btn btn-full btn-block" href="{u("/pages/request-a-quote")}">Request a corporate quote</a></div>
+  <div class="drawer-foot">{lang_toggle("lang--drawer")}<a class="btn btn-full btn-block" href="{u("/pages/request-a-quote")}">Request a corporate quote</a></div>
 </aside>
+<div id="gt" hidden></div>
 <aside class="drawer drawer--right" id="search" aria-label="Search" aria-hidden="true">
   <div class="drawer-head"><h2>Search</h2><button class="icon-btn" data-close aria-label="Close search">{ICON["close"]}</button></div>
   <div class="drawer-body">

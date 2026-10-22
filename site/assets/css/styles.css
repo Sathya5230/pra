@@ -229,6 +229,20 @@ body::before, .hero::before, .section--butter::before, .section--ganache::before
 .icon-btn svg { width: 22px; height: 22px; }
 .cart-count { position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--cocoa); color: var(--cream); font-size: .7rem; font-weight: 700; display: grid; place-items: center; }
 .cart-count:empty { display: none; }
+/* EN | NL switch (header; mobile drawer on phones) */
+.lang { display: flex; padding: 2px; margin-right: .4rem; border: 2px solid var(--cocoa); border-radius: var(--pill); }
+.lang button { min-width: 34px; min-height: 30px; padding: 0 .55rem; border: 0; border-radius: var(--pill); background: none; color: var(--cocoa); font: inherit; font-size: .78rem; font-weight: 700; letter-spacing: .06em; cursor: pointer; }
+.lang button:hover { background: var(--butter); }
+.lang button[aria-pressed="true"] { background: var(--cocoa); color: var(--cream); }
+.lang--drawer { width: max-content; margin: 0 auto .9rem; }
+.lang--drawer button { min-height: 38px; padding: 0 1.1rem; }
+/* Google Translate (NL): hide its banner, tooltip and hover highlight */
+.skiptranslate iframe, #goog-gt-tt { display: none !important; }
+body { top: 0 !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+/* Dutch nav labels run longer ("Relatiegeschenken"), so tighten the top nav */
+.translated-ltr .nav-link { padding-inline: .42rem; font-size: .8rem; letter-spacing: .01em; }
+.translated-ltr .nav-link::after { left: .42rem; right: .42rem; }
 .menu-toggle { display: none; }
 @media (max-width: 1240px) {
   .nav { display: none; }

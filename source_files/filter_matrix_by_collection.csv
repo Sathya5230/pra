@@ -1,0 +1,15 @@
+Collection/template,Filter group,Values,Data source,Owner,Rule
+All Chocolates,Availability,In stock | Out of stock,Shopify inventory,Ecommerce Trader,Show on broad pages only
+All Chocolates,Price,Under €25 | €25-€50 | €50-€100 | €100+,Price,Ecommerce Trader,Use buckets
+All Chocolates,Product Type,Pralines | Truffles | Ballotins | Gift Boxes | Tablets | Small Treats | Premium Gifts,product_type/product_format,Ecommerce Trader,Metafield-backed if needed
+All Chocolates,Chocolate Type,Dark | Milk | White | Mixed,chocolate_type metafield,Ecommerce Trader,Use on product-led pages
+All Chocolates,Conscious Choices,Vegan | Organic | Fairtrade | No alcohol | Belgian made,product metafields,Ecommerce Trader/SEO,Only true product-level claims
+Pralines & Truffles,Box Size,12 pieces | 24 pieces | 36 pieces | 250g | 500g | 1kg,piece_count/net_weight,Ecommerce Trader,Keep simple
+Pralines & Truffles,Filling,Praliné | Ganache | Caramel | Cream | Marzipan | Fruit | Nut | Truffle,filling_type,Ecommerce Trader,Product detail and filter
+Gifts,Occasion,Birthday | Thank You | Love | Dinner Party | Wedding | Seasonal,occasion tag/metafield,Ecommerce Trader,Gift intent
+Gifts,Recipient,Client | Employee | Team | Host | Partner | Family | Self Treat,recipient tag/metafield,Ecommerce Trader,Use if enough products
+Gifts,Gift Level,Small Attention | Proper Gift | Premium Gift | Corporate Ready,gift_level metafield,Ecommerce Trader,Human labels
+Vegan & Conscious,Conscious Choices,Vegan | Organic | Fairtrade | No alcohol | Dark Chocolate | Fruit & Nut,claim metafields,SEO Specialist/Ecommerce Trader,Do not clutter
+Corporate Gifts,Use Case,Client Gifts | Employee Gifts | Event Gifts | Trade Fair Gifts | Campaign Gifts,corporate_use_case,Ecommerce Trader,B2B-specific filters
+Corporate Gifts,Personalisation,Logo Pralines | Branded Sleeve | Branded Card | Branded Ribbon | Custom Packaging,personalisation_available,Shopify Designer/Developer,B2B-specific filters
+Corporate Gifts,Quantity Range,25-50 | 51-100 | 101-250 | 250+,quote form field,Ecommerce Trader,Quote flow rather than retail filter

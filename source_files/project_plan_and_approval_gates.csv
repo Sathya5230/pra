@@ -1,0 +1,16 @@
+Phase,Workstream,Task,Owner,Output,Gate
+1 Strategy,Commercial,Approve positioning and revenue priorities,Founder/Ecommerce Trader,Strategy one-pager,Gate 1
+1 Strategy,Assortment,Define launch SKU list and variants,Ecommerce Trader,Launch assortment matrix,Gate 1
+1 Strategy,Brand,Approve brand direction and tone,Brand Designer,Brand board,Gate 1
+2 Architecture,UX,Approve sitemap and navigation,Shopify UX Designer,Sitemap and nav matrix,Gate 2
+2 Architecture,Shopify,Approve metafield schema and collection rules,Shopify Developer,Data schema,Gate 2
+2 Architecture,SEO,Approve keyword-to-page map,SEO Specialist,SEO map,Gate 2
+3 Design,UX/UI,"Design homepage, PLP, PDP, corporate, vegan, delivery",Shopify UX Designer,Figma pages,Gate 3
+3 Design,Brand,Create photography/media direction and component system,Brand Designer,Design system,Gate 3
+4 Build,Shopify,"Configure theme, metafields, collections, filters",Shopify Developer,Working store,Gate 4
+4 Build,Integrations,"Install/configure apps: search, delivery, quotes, upload, email, analytics",Shopify Developer,Integration test sheet,Gate 4
+5 Content,Trading,"Load products, pricing, shipping rules, copy",Ecommerce Trader,Product catalogue,Gate 5
+5 Content,SEO,"Meta titles, descriptions, schema, sitemap, redirects",SEO Specialist,SEO QA sheet,Gate 5
+6 QA,Cross-functional,"Mobile, checkout, filters, forms, delivery, analytics QA",All,QA checklist completed,Launch gate
+7 Launch,Marketing/Trading,Soft launch and monitor orders/leads/search,Ecommerce Trader,Launch dashboard,Post-launch
+8 Optimise,Growth,"Review conversion, filters, search, corporate leads, SEO",All,Optimisation backlog,30-day review

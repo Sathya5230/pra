@@ -1,0 +1,33 @@
+Top nav,Dropdown item,URL,Owner,Purpose,Build note
+Shop,All Chocolates,/collections/all,Shopify UX Designer,Full catalogue,Broad filters
+Shop,Pralines & Truffles,/collections/pralines-and-truffles,Shopify UX Designer,Core category,Dedicated filters
+Shop,Ballotins,/collections/ballotins,Shopify UX Designer,Heritage format,Weights/box sizes
+Shop,Gift Boxes,/collections/gift-boxes,Shopify UX Designer,Gift conversion,Occasion chips
+Shop,Chocolate Tablets,/collections/chocolate-tablets,Shopify UX Designer,Add-on/lower price,Vegan/dark route
+Shop,Small Gifts,/collections/small-gifts,Shopify UX Designer,Low-friction gift,Under entry price
+Shop,Premium Gifts,/collections/premium-gifts,Shopify UX Designer,AOV driver,Premium design
+Shop,Belgian Classics,/collections/belgian-classics,Shopify UX Designer,Heritage route,SEO/education
+Shop,Seasonal Drops,/collections/seasonal-drops,Shopify UX Designer,Campaign route,Use disruptor accent
+Gifts,Birthday Gifts,/collections/birthday-gifts,Shopify UX Designer,Occasion shopping,SEO page
+Gifts,Thank You Gifts,/collections/thank-you-gifts,Shopify UX Designer,Occasion shopping,High usage
+Gifts,Love & Romance,/collections/love-and-romance,Shopify UX Designer,Occasion shopping,Valentine ready
+Gifts,Dinner Party Gifts,/collections/dinner-party-gifts,Shopify UX Designer,Host gift,Small gifts
+Gifts,Small Attentions,/collections/small-attentions,Shopify UX Designer,Human label for small gifts,Create collection or redirect to small gifts
+Corporate Gifts,Corporate Gifting,/pages/corporate-gifting,Shopify UX Designer,B2B overview,Top-priority path
+Corporate Gifts,Pralines with Logo,/pages/pralines-with-logo,Shopify UX Designer,Logo praline service,Reference Van Parijs
+Corporate Gifts,Client Gifts,/pages/client-gifts,Shopify UX Designer,B2B use case,Can phase content
+Corporate Gifts,Employee Gifts,/pages/employee-gifts,Shopify UX Designer,B2B use case,Can phase content
+Corporate Gifts,Request a Quote,/pages/request-a-quote,Shopify Developer,Lead capture,Visible CTA
+Corporate Gifts,Upload Your Logo,/pages/upload-your-logo,Shopify Developer,File upload,Visible CTA
+Vegan & Conscious,Vegan Chocolate,/collections/vegan-chocolates,Shopify UX Designer,Values-led shop,Top-level route
+Vegan & Conscious,Organic,/collections/organic-chocolate,SEO Specialist,Claim page if true,Do not overclaim
+Vegan & Conscious,Fairtrade,/collections/fairtrade-chocolate,SEO Specialist,Claim page if true,Do not overclaim
+Vegan & Conscious,No Alcohol,/collections/no-alcohol-chocolates,Ecommerce Trader,Gift trust,Metafield driven
+Vegan & Conscious,Ingredient Transparency,/pages/ingredient-transparency,Brand Designer,Claim proof,Editorial trust
+Our Chocolate,Belgian Pralines,/pages/belgian-pralines,Brand Designer,Heritage education,Editorial page
+Our Chocolate,Ingredients,/pages/ingredients,Brand Designer,Ingredient trust,PDP support
+Our Chocolate,Allergens,/pages/allergens,Ecommerce Trader,Safety/compliance,FAQ style
+Delivery,Shipping Information,/pages/shipping-and-delivery,Ecommerce Trader,Shipping clarity,Core conversion
+Delivery,Delivery Calendar,/pages/delivery-calendar,Shopify Developer,Date logic,Needs app/custom
+Delivery,Warm Weather Shipping,/pages/warm-weather-shipping,Ecommerce Trader,Heat policy,Core chocolate trust
+Delivery,FAQ,/pages/faq,Ecommerce Trader,Support deflection,Launch required

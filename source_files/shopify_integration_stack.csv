@@ -1,0 +1,13 @@
+Capability,Recommended approach,Grounding,Owner,Priority,Decision needed
+"Filters, search, synonyms, recommendations",Shopify Search & Discovery,"Official Shopify app customizes search, filters and recommendations: https://apps.shopify.com/search-and-discovery",Shopify Developer,Must have,Confirm theme support for filter drawer
+Product data and badges,Shopify metafields and metaobjects,"Use metafields for format, filling, claims, allergens, gift eligibility",Shopify Developer,Must have,Approve final data schema before product load
+Sitemap,Shopify auto-generated sitemap.xml,"Shopify Help confirms sitemap.xml includes products, images, pages, collections, blogs: https://help.shopify.com/en/manual/promoting-marketing/seo/find-site-map",SEO Specialist,Must have,Submit to GSC after launch
+Checkout customization,Checkout UI extensions if Shopify Plus,Shopify dev docs describe Checkout UI Extensions: https://shopify.dev/docs/api/checkout-ui-extensions/latest,Shopify Developer,Should have,Depends on plan and checkout requirements
+Delivery date picker,App or custom extension,Shopify App Store options such as delivery date picker apps; evaluate against heat rules,Shopify Developer/Ecommerce Trader,Must have for gifting,Pick app after shipping rules are defined
+Courier/shipping automation,Sendcloud / ShipStation / carrier app evaluation,"Needed for labels, tracking, returns, courier rules",Ecommerce Trader/Developer,Must have,"Country, courier and fulfilment model required"
+Corporate quote request,Request a quote app or custom form,"Required for bulk, logo pralines, client/employee gifts",Shopify Developer,Must have,"Decide if quotes feed email, CRM or Shopify draft orders"
+Logo upload,File upload app or custom form field,Required for pralines with logo and branded packaging,Shopify Developer,Must have for B2B,Define accepted file formats and artwork approval flow
+Gift message,Gift message app or theme customization,Core gifting expectation,Shopify Designer/Developer,Must have,Decide PDP/cart/checkout location
+Reviews,Judge.me / Yotpo / Shopify-compatible reviews,Trust and product proof,Ecommerce Trader,Should have,Pick based on budget
+Email/SMS CRM,Klaviyo or Shopify Email,"Abandoned cart, gifting calendar, corporate reminders",Ecommerce Trader,Must have,Klaviyo if serious ecommerce
+Analytics,"GA4, GSC, Shopify Analytics, pixels",Measurement plan requires ecommerce and journey events,SEO/Ecommerce Trader,Must have,Implement before soft launch

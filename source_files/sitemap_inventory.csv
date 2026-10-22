@@ -1,0 +1,35 @@
+Path,Navigation group,Page type,Primary owner,Page job,Launch priority,Template,Notes
+/,Home,Homepage,Shopify UX Designer,"Route users by intent: gift, corporate, vegan, shop",Must launch,Homepage,"Hero, intent cards, bestsellers, corporate, vegan, delivery trust"
+/collections/all,Shop,Collection,Ecommerce Trader,Full catalogue browsing,Must launch,Collection PLP,Use broad filters only here
+/collections/pralines-and-truffles,Shop,Collection,Ecommerce Trader,Core category revenue and Belgian product truth,Must launch,Collection PLP,"Filters: price, box size, chocolate type, filling, alcohol"
+/collections/ballotins,Shop,Collection,Ecommerce Trader,Heritage product format,Must launch,Collection PLP,"250g, 500g, 1kg variants"
+/collections/gift-boxes,Shop/Gifts,Collection,Ecommerce Trader,Core gift conversion,Must launch,Collection PLP,Show occasion chips
+/collections/chocolate-tablets,Shop,Collection,Ecommerce Trader,Lower-price entry and add-on product,Phase 1,Collection PLP,Useful for vegan and dark chocolate
+/collections/small-gifts,Shop/Gifts,Collection,Ecommerce Trader,Low-friction gifting under entry price,Must launch,Collection PLP,Pair with gift message
+/collections/premium-gifts,Shop/Gifts,Collection,Ecommerce Trader,AOV driver,Must launch,Collection PLP,Premium image style
+/collections/belgian-classics,Shop,Collection,Ecommerce Trader,Heritage and SEO route,Phase 1,Collection PLP,"Pralines, ballotins, truffles"
+/collections/seasonal-drops,Shop/Gifts,Collection,Ecommerce Trader,Campaign and urgency driver,Phase 1,Collection PLP,Can be manually curated
+/collections/birthday-gifts,Gifts,Collection,Ecommerce Trader,Occasion landing page,Phase 1,Gift PLP,SEO and paid search landing
+/collections/thank-you-gifts,Gifts,Collection,Ecommerce Trader,Occasion landing page,Must launch,Gift PLP,Strong corporate crossover
+/collections/love-and-romance,Gifts,Collection,Ecommerce Trader,Occasion landing page,Phase 1,Gift PLP,Valentine later
+/collections/dinner-party-gifts,Gifts,Collection,Ecommerce Trader,Host gift route,Phase 1,Gift PLP,Good for small gifts
+/collections/vegan-chocolates,Vegan & Conscious,Collection,Ecommerce Trader,Growth and values-led buyer route,Must launch,Vegan PLP,Self-canonical SEO collection
+/collections/organic-chocolate,Vegan & Conscious,Collection,Ecommerce Trader/SEO,Claim landing page if true at SKU level,Phase 1 if claims exist,Collection PLP,Do not create if not supported by products
+/collections/fairtrade-chocolate,Vegan & Conscious,Collection,Ecommerce Trader/SEO,Claim landing page if true at SKU level,Phase 1 if claims exist,Collection PLP,Do not create if not supported by products
+/collections/no-alcohol-chocolates,Vegan & Conscious,Collection,Ecommerce Trader,Dietary/trust gift route,Must launch if data supports,Collection PLP,Useful for gifting
+/collections/corporate-gifts,Corporate Gifts,Collection,Ecommerce Trader,Business gift product collection,Must launch,Corporate PLP,Not normal retail clutter
+/pages/corporate-gifting,Corporate Gifts,Landing page,Shopify UX Designer,B2B funnel and value proposition,Must launch,Corporate Landing,"Use cases, product formats, personalisation, quote"
+/pages/pralines-with-logo,Corporate Gifts,Landing page,Shopify UX Designer,Logo pralines conversion page,Must launch,Corporate Landing,Inspired by Van Parijs
+/pages/client-gifts,Corporate Gifts,Landing page,Ecommerce Trader,Specific B2B use case,Phase 1,Corporate Landing,Can be copy-light at launch
+/pages/employee-gifts,Corporate Gifts,Landing page,Ecommerce Trader,Specific B2B use case,Phase 1,Corporate Landing,Useful for HR/bulk
+/pages/request-a-quote,Corporate Gifts,Form page,Shopify Developer,B2B quote capture,Must launch,Quote Form,"Quantity, budget, date, upload logo"
+/pages/upload-your-logo,Corporate Gifts,Form page,Shopify Developer,Logo upload and artwork intake,Must launch,Upload Form,File type guidance
+/pages/belgian-pralines,Our Chocolate,Trust/SEO page,Brand Designer/SEO,Heritage and product education,Must launch,Editorial Trust,Supports brand authority
+/pages/ingredients,Our Chocolate,Trust page,Brand Designer,Ingredient transparency,Must launch,Editorial Trust,Links from PDP tabs
+/pages/organic-and-fairtrade,Our Chocolate,Trust page,SEO Specialist,Claim proof,Phase 1 if claims exist,Editorial Trust,Avoid greenwashing
+/pages/allergens,Our Chocolate,Trust page,Ecommerce Trader,Allergen safety and product trust,Must launch,FAQ/Trust,Also product-level content
+/pages/shipping-and-delivery,Delivery,Service page,Ecommerce Trader/Developer,Delivery rules and customer confidence,Must launch,Service,Core conversion page
+/pages/delivery-calendar,Delivery,Service page,Shopify Developer,Date picker and shipping calendar logic,Must launch if app ready,Service,Critical for gifts
+/pages/warm-weather-shipping,Delivery,Service page,Ecommerce Trader/SEO,Temperature-sensitive shipping clarity,Must launch,Service,Reduces complaints
+/pages/returns-and-quality-guarantee,Delivery,Service page,Ecommerce Trader,Quality guarantee and returns policy,Must launch,Service,Risk reduction
+/pages/faq,Delivery,FAQ,Ecommerce Trader,Support deflection,Must launch,FAQ,"Shipping, gifting, vegan, allergens, corporate"

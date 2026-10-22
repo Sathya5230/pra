@@ -1,0 +1,22 @@
+Metafield,Type,Used for,Owner,Required
+product_format,single line text or metaobject,"Filters, PDP, badges",Developer/Trader,Yes
+piece_count,number integer,"PDP, filters, product card",Developer/Trader,Yes
+net_weight,single line text,"PDP, product card",Developer/Trader,Yes
+chocolate_type,list of values,"Filters, PDP",Developer/Trader,Yes
+filling_type,list of values,"Filters, PDP",Developer/Trader,Yes for pralines
+flavour_profile,multi-line text,PDP story,Trader,Yes
+ingredients,rich text,PDP trust/compliance,Trader,Yes
+allergens,list/single line text,PDP trust/compliance,Trader,Yes
+contains_alcohol,boolean,No alcohol filter,Developer/Trader,Yes
+shelf_life,single line text,PDP/delivery trust,Trader,Yes
+storage_advice,rich text,PDP/delivery trust,Trader,Yes
+vegan,boolean,Filters/badges/SEO,Developer/Trader,Yes if vegan line
+organic,boolean,Filters/badges/SEO,Developer/Trader,If true
+fairtrade,boolean,Filters/badges/SEO,Developer/Trader,If true
+belgian_made,boolean,Badges/trust,Developer/Trader,Yes
+gift_eligible,boolean,"Gift filters, product cards",Developer/Trader,Yes
+corporate_eligible,boolean,"B2B route, badges",Developer/Trader,Yes
+logo_personalisation_available,boolean,Corporate pages,Developer/Trader,If true
+warm_weather_shipping,boolean/text,Shipping warnings,Developer/Trader,Yes
+delivery_lead_time,single line text,PDP/cart,Developer/Trader,Yes
+click_and_collect_available,boolean,Delivery filter,Developer/Trader,If offered

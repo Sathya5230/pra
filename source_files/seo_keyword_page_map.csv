@@ -1,0 +1,11 @@
+Target keyword/theme,Target page,Page type,Intent,Owner,Canonical rule,Notes
+Belgian pralines,/pages/belgian-pralines,Editorial/SEO,Informational + brand trust,SEO Specialist,Self-canonical,Heritage and product education
+Belgian praline gift box,/collections/gift-boxes,Collection,Commercial,SEO Specialist,Self-canonical,Core money page
+Pralines with logo,/pages/pralines-with-logo,Landing,B2B commercial,SEO Specialist,Self-canonical,Van Parijs-inspired
+Corporate chocolate gifts,/pages/corporate-gifting,Landing,B2B commercial,SEO Specialist,Self-canonical,Quote CTA
+Vegan Belgian chocolate,/collections/vegan-chocolates,Collection,Commercial + values,SEO Specialist,Self-canonical,Growth route
+Organic Belgian chocolate,/collections/organic-chocolate,Collection,Commercial + claim,SEO Specialist,Self-canonical only if products exist,Avoid greenwashing
+Fairtrade Belgian chocolate,/collections/fairtrade-chocolate,Collection,Commercial + claim,SEO Specialist,Self-canonical only if products exist,Avoid greenwashing
+Warm weather chocolate delivery,/pages/warm-weather-shipping,Service/SEO,Trust and service,SEO Specialist,Self-canonical,Reduces support queries
+How to store pralines,/blogs/stories/how-to-store-pralines,Blog,Informational,SEO Specialist,Self-canonical,Supports product care
+filtered URLs,Any filtered collection URL,Parameter URL,UX only,SEO Specialist,Canonical to parent collection,Do not index filters

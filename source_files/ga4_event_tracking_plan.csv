@@ -1,0 +1,15 @@
+Event,Where triggered,Why track,Implementation note
+view_collection,Collection pages,Measure category traffic,GA4 ecommerce
+filter_used,Collection filter drawer,Assess filter usefulness,Custom event
+search_used,Site search,Measure discovery behavior,Include query
+no_results,Search no results,Fix synonyms/content gaps,Track query
+view_product,PDP,Product interest,GA4 ecommerce
+add_to_cart,PDP/PLP/cart,Conversion intent,GA4 ecommerce
+gift_message_added,PDP/cart,Gifting behavior,Custom event
+delivery_date_selected,PDP/cart/checkout,Delivery confidence,Custom event
+corporate_quote_clicked,Corporate/PDP/cart,B2B intent,Custom event
+logo_upload_started,Corporate pages,B2B personalization intent,Custom event
+quote_form_submitted,Quote form,B2B lead conversion,CRM/GA4 event
+checkout_started,Cart,Checkout funnel,GA4 ecommerce
+purchase,Thank you page,Revenue,GA4 ecommerce
+newsletter_signup,Footer/modal,Owned audience growth,Email integration

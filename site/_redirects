@@ -1,0 +1,5 @@
+# Netlify / Cloudflare Pages. Both serve /x from x.html automatically (clean URLs).
+# 301s from the workbook "Redirects & Canonicals" sheet.
+/collections/small-attentions   /collections/small-gifts   301
+/pages/ingredient-transparency  /pages/ingredients         301
+/_build/*                        /404                       404

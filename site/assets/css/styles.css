@@ -316,22 +316,52 @@ textarea.input { min-height: 96px; resize: vertical; }
 .trust-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.75rem 0 0; padding: 0; list-style: none; }
 .trust-chips li { display: inline-flex; align-items: center; padding: .4rem .85rem; border-radius: var(--pill); background: var(--cream); font-size: .85rem; font-weight: 500; }
 .trust-chips .ico-s { color: var(--cocoa); }
-.hero-art { position: relative; max-width: 540px; justify-self: center; width: 100%; }
-.hero-main img { box-shadow: var(--shadow); }
-.hero-inset { position: absolute; left: -12%; bottom: 8%; width: 42%; border: 8px solid var(--butter); border-radius: 50%; z-index: 2; }
-.hero-tag {
-  position: absolute; right: -4%; top: 10%; z-index: 3; background: var(--rose); color: var(--bitter); text-decoration: none;
-  border-radius: 50%; width: 128px; height: 128px; display: grid; place-content: center; text-align: center; transform: rotate(10deg);
-  font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: 1.15rem; line-height: 1; padding: 1rem; box-shadow: var(--shadow);
+/* Hero collage: main photo on an offset caramel block, an overlapping inset,
+   a floating product card and a seasonal pill. One staged entrance on load. */
+.hero-art { position: relative; width: 100%; max-width: 540px; justify-self: center; padding: 1.75rem 0 3.5rem 2.5rem; }
+.hero-art::before {
+  content: ""; position: absolute; z-index: 0; left: 6rem; right: -2.25rem; top: -1.75rem; bottom: 5.5rem;
+  border-radius: 36px; background: var(--latte);
+  background-image: radial-gradient(circle at 1px 1px, rgba(123, 75, 42, .28) 1.2px, transparent 0); background-size: 14px 14px;
 }
-.hero-tag small { font-family: var(--f-script); text-transform: none; font-size: 1.1rem; font-weight: 400; }
-.hero-tag:hover { background: #dc9886; }
+.hero-main { position: relative; z-index: 1; margin: 0; border-radius: 32px; overflow: hidden; box-shadow: 0 40px 60px -32px rgba(43, 25, 15, .55); animation: hero-in .9s var(--ease) both; }
+.hero-main img { width: 100%; aspect-ratio: 4 / 4.55; object-fit: cover; transition: transform 1.2s var(--ease); }
+.hero-art:hover .hero-main img { transform: scale(1.03); }
+.hero-main::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255, 247, 232, .35); pointer-events: none; }
+.hero-inset {
+  position: absolute; z-index: 2; left: 0; bottom: 0; width: 42%; margin: 0;
+  border-radius: 26px; overflow: hidden; border: 8px solid var(--cream); box-shadow: var(--shadow);
+  transform: rotate(-4deg); animation: hero-in .9s .15s var(--ease) both;
+}
+.hero-inset img { aspect-ratio: 1; object-fit: cover; width: 100%; }
+.hero-art .stamp { animation: hero-in .9s .3s var(--ease) both; }
+.hero-pill {
+  position: absolute; z-index: 3; top: 1.25rem; right: -.75rem; display: inline-flex; align-items: center; gap: .5rem;
+  padding: .55rem 1rem; border-radius: var(--pill); background: var(--rose); color: var(--bitter); text-decoration: none;
+  font-weight: 700; font-size: .85rem; box-shadow: var(--shadow); animation: hero-in .9s .35s var(--ease) both;
+}
+.hero-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--cocoa); box-shadow: 0 0 0 4px rgba(123, 75, 42, .18); }
+.hero-pill:hover { background: #dc9886; }
+.hero-card {
+  position: absolute; z-index: 3; right: -1.5rem; bottom: 1.25rem; width: min(300px, 72%);
+  display: grid; grid-template-columns: 56px 1fr auto; gap: .75rem; align-items: center;
+  padding: .65rem .75rem .65rem .65rem; border-radius: 20px; text-decoration: none;
+  background: rgba(255, 247, 232, .94); backdrop-filter: blur(10px); box-shadow: 0 24px 40px -20px rgba(43, 25, 15, .55);
+  animation: hero-in .9s .45s var(--ease) both; transition: transform .25s var(--ease);
+}
+.hero-card:hover { transform: translateY(-3px); }
+.hero-card img { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; }
+.hero-card small { display: block; font-size: .7rem; font-weight: 700; color: var(--cocoa); text-transform: uppercase; letter-spacing: .08em; }
+.hero-card b { display: block; font-size: .95rem; line-height: 1.2; }
+.hero-card em { display: block; font-style: normal; font-size: .78rem; color: var(--muted); }
+.hero-card-go { width: 34px; height: 34px; border-radius: 50%; background: var(--cocoa); color: var(--cream); display: grid; place-items: center; }
+.hero-card-go svg { width: 16px; height: 16px; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(18px); } }
+@keyframes hero-in-inset { from { opacity: 0; transform: translateY(18px) rotate(-4deg); } to { transform: rotate(-4deg); } }
+.hero-inset { animation-name: hero-in-inset; }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-art { order: -1; max-width: 400px; }
-  .hero-inset { left: -4%; }
-  .hero-tag { width: 104px; height: 104px; font-size: .95rem; right: 0; }
-  .hero .stamp { display: none; }
+  .hero-art { order: -1; max-width: 460px; }
 }
 
 /* Trust strip */
@@ -856,11 +886,19 @@ body.has-sticky { padding-bottom: 68px; }
 
   /* Hero */
   .hero-grid { padding-block: 1.25rem .5rem; gap: 1.25rem; }
-  .hero-art { max-width: 300px; }
-  .hero-main img { aspect-ratio: 1 / 1.05; }
-  .hero-inset { width: 36%; border-width: 5px; bottom: 4%; left: -6%; }
-  .hero-tag { width: 84px; height: 84px; font-size: .8rem; padding: .6rem; top: 4%; right: -4%; }
-  .hero-tag small { font-size: .85rem; }
+  .hero-art { max-width: 360px; padding: 0 0 2.5rem 1.25rem; }
+  .hero-art { padding-top: 1rem; }
+  .hero-art::before { left: 3rem; right: -.6rem; top: 0; bottom: 3.5rem; border-radius: 26px; }
+  .hero-main { border-radius: 24px; }
+  .hero-main img { aspect-ratio: 1 / 1.02; }
+  .hero-inset { width: 36%; border-width: 5px; border-radius: 18px; }
+  .hero-art .stamp { display: none; }
+  .hero-pill { top: .75rem; right: -.25rem; font-size: .75rem; padding: .4rem .75rem; }
+  .hero-card { right: -.5rem; bottom: .5rem; width: 64%; grid-template-columns: 40px 1fr; gap: .5rem; padding: .5rem .6rem .5rem .5rem; border-radius: 14px; }
+  .hero-card img { width: 40px; height: 40px; border-radius: 10px; }
+  .hero-card b { font-size: .82rem; }
+  .hero-card em { display: none; }
+  .hero-card-go { display: none; }
   .hero h1 { font-size: clamp(2.6rem, 12vw, 3.3rem); margin-bottom: .9rem; }
   .hero h1 .script { font-size: 1.35rem; }
   .hero .lead { margin-bottom: 1.25rem; }

@@ -109,7 +109,6 @@ def home():
 
     return f'''
 <section class="hero grain">
-  {doodle("bean", "left:47%;top:9%;width:46px;transform:rotate(24deg)", "var(--milk)")}
   {doodle("leaf", "left:3%;bottom:14%;width:74px;transform:rotate(-12deg)", "var(--latte)")}
   {doodle("sparkle", "left:43%;bottom:24%;width:22px", "var(--cocoa)")}
   <div class="wrap hero-grid">
@@ -123,10 +122,15 @@ def home():
       </ul>
     </div>
     <div class="hero-art">
-      <figure class="ph ph--arch hero-main">{img("hero", "Milk chocolate pralines with dark chocolate stripes in paper cups", eager=True)}</figure>
-      <figure class="ph ph--circle hero-inset">{img("hero-truffles", "A hand placing a striped praline on a wooden board")}</figure>
-      {stamp("PRALINE · FAIT MAIN À BRUXELLES · ", "right:-30px;bottom:-26px")}
-      <a class="hero-tag" href="{u("/collections/seasonal-drops")}"><small>New</small>Winter spice edition</a>
+      <figure class="hero-main">{img("hero", "Milk chocolate pralines with dark chocolate stripes in paper cups", eager=True)}</figure>
+      <figure class="hero-inset">{img("hero-truffles", "A hand placing a striped praline on a wooden board")}</figure>
+      {stamp("PRALINE · FAIT MAIN À BRUXELLES · ", "left:-44px;top:-34px")}
+      <a class="hero-pill" href="{u("/collections/seasonal-drops")}"><i aria-hidden="true"></i>New · Winter spice edition</a>
+      <a class="hero-card" href="{u("/products/signature-gift-box")}">
+        {img("assets/img/products/signature-gift-box-1-sm.jpg", "")}
+        <span><small>Bestseller</small><b>Signature gift box</b><em>12–36 pieces · from €22</em></span>
+        <span class="hero-card-go" aria-hidden="true">{ICON["right"]}</span>
+      </a>
     </div>
   </div>
   {wave("var(--cream)", "transparent")}

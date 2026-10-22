@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "outputDirectory": "site",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/collections/small-attentions", "destination": "/collections/small-gifts", "permanent": true },
+    { "source": "/pages/ingredient-transparency", "destination": "/pages/ingredients", "permanent": true }
+  ]
+}

@@ -1,0 +1,5 @@
+# Only the built site is deployed; build scripts and client source files stay out.
+source_files
+PROJECT_ANALYSIS.md
+site/_build
+site/serve.py

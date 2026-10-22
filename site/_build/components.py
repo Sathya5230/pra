@@ -139,8 +139,16 @@ NAV = [
 ]
 
 
-def logo(tag="a"):
-    return f'<a class="logo" href="{u("/")}" aria-label="{BRAND} home"><b>{BRAND}</b><i>chocolatier à Bruxelles</i></a>'
+MARK = "assets/img/brand/mark.png"  # crowned cacao pod, stamped on every praline
+
+
+def logo(tag="a", mark=True):
+    m = f'<img class="logo-mark" src="{u(MARK)}" alt="" width="173" height="320">' if mark else ""
+    return f'<a class="logo" href="{u("/")}" aria-label="{BRAND} home">{m}<span class="logo-word"><b>{BRAND}</b><i>chocolatier à Bruxelles</i></span></a>'
+
+
+def crest():
+    return f'<div class="crest" role="img" aria-label="Established 1977"><span>Est.</span><img src="{u(MARK)}" alt="" width="173" height="320"><span>1977</span></div>'
 
 
 def head(title, desc, canonical, noindex=False, extra=""):
@@ -157,7 +165,7 @@ def head(title, desc, canonical, noindex=False, extra=""):
   <meta property="og:title" content="{esc(full)}">
   <meta property="og:description" content="{esc(desc)}">
   <meta name="theme-color" content="#3D2617">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237B4B2A'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial' font-weight='900' font-size='36' fill='%23FFF7E8'%3EP%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="{u('assets/img/brand/favicon.png')}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="{FONTS}">
@@ -233,7 +241,8 @@ def footer(bg_above="var(--cream)"):
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        {logo()}
+        {crest()}
+        {logo(mark=False)}
         <p>Belgian pralines made in small batches in Brussels and packed to travel cool. Questions about an order? <a href="mailto:hello@example.com">hello@example.com</a></p>
         <div class="socials"><a class="icon-btn" href="#" aria-label="Instagram">{ICON["insta"]}</a><a class="icon-btn" href="#" aria-label="Pinterest">{ICON["pinterest"]}</a></div>
       </div>

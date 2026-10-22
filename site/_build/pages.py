@@ -94,14 +94,12 @@ def home():
         <figure class="intent-img">{img(k, "")}</figure>
         <div class="intent-copy"><span class="h3">{t}</span><p>{d}</p><span class="go">{g} {ICON["right"]}</span></div></a>''' for h, k, t, d, g, c in intents)
 
-    flavours = [("Praliné", "Roasted hazelnut and almond", "assets/img/products/noisette-praline-box-1-sm.jpg", "/collections/pralines-and-truffles"),
-                ("Ganache", "Single-origin dark", "assets/img/products/noir-ganache-collection-1-sm.jpg", "/collections/pralines-and-truffles"),
-                ("Caramel", "Soft, with Guérande salt", "assets/img/products/salted-caramel-mini-1-sm.jpg", "/collections/small-gifts"),
-                ("Truffle", "Fresh cream, cocoa-dusted", "assets/img/products/truffle-box-1-sm.jpg", "/collections/pralines-and-truffles"),
-                ("Fruit", "Raspberry and clementine", "assets/img/products/raspberry-ganache-hearts-1-sm.jpg", "/collections/love-and-romance"),
-                ("Rocher", "Crunchy nut-coated domes", "assets/img/products/hazelnut-rochers-1-sm.jpg", "/collections/small-gifts"),
-                ("Mendiant", "Dark discs, nuts and fruit", "assets/img/products/mendiants-1-sm.jpg", "/collections/belgian-classics"),
-                ("Tablet", "Noir 72%, 85% and milk", "assets/img/products/tablet-noir-72-1-sm.jpg", "/collections/chocolate-tablets")]
+    flavours = [("Praliné", "Whole roasted hazelnut", "assets/img/flavours/hazelnut.jpg", "/collections/pralines-and-truffles"),
+                ("Caramel", "Soft, with Guérande salt", "assets/img/flavours/caramel.jpg", "/collections/small-gifts"),
+                ("Pistachio", "Pistachio praliné on feuilletine", "assets/img/flavours/pistachio.jpg", "/collections/pralines-and-truffles"),
+                ("Raspberry", "Fruit layer over dark ganache", "assets/img/flavours/raspberry.jpg", "/collections/love-and-romance"),
+                ("Truffle", "Fresh cream, cocoa-dusted", "assets/img/flavours/truffle.jpg", "/collections/pralines-and-truffles"),
+                ("Passion fruit", "Vanilla white ganache", "assets/img/flavours/passion.jpg", "/collections/pralines-and-truffles")]
     flavour_html = "".join(f'<a class="flavour-tile" href="{u(h)}"><span class="ft-img">{img(i, "")}</span><span class="h3">{n}</span><small>{d}</small></a>' for n, d, i, h in flavours)
 
     mosaic = ["rows", "mixing", "hazel-shells", "truffle-bowl", "tablet-foil", "gift-roses"]

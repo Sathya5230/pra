@@ -122,14 +122,10 @@ def home():
       </ul>
     </div>
     <div class="hero-art">
-      <figure class="hero-main">{img("hero", "Milk chocolate pralines with dark chocolate stripes in paper cups", eager=True)}</figure>
-      <figure class="hero-inset">{img("hero-truffles", "A hand placing a striped praline on a wooden board")}</figure>
-      {stamp("PRALINE · FAIT MAIN À BRUXELLES · ", "left:-44px;top:-34px")}
-      <a class="hero-pill" href="{u("/collections/seasonal-drops")}"><i aria-hidden="true"></i>New · Winter spice edition</a>
-      <a class="hero-card" href="{u("/products/signature-gift-box")}">
-        {img("assets/img/products/signature-gift-box-1-sm.jpg", "")}
-        <span><small>Bestseller</small><b>Signature gift box</b><em>12–36 pieces · from €22</em></span>
-        <span class="hero-card-go" aria-hidden="true">{ICON["right"]}</span>
+      <figure class="hero-ballotin">{img("hero-box", "An open box of square pralines with stamped and gilded tops", eager=True)}</figure>
+      <a class="hero-label" href="{u("/products/signature-gift-box")}">
+        <span class="hero-label-name">Signature praline box</span>
+        <span class="hero-label-price">From €22.00</span>
       </a>
     </div>
   </div>

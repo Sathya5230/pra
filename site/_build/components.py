@@ -6,7 +6,7 @@ from PIL import Image
 
 SITE = Path(__file__).resolve().parent.parent
 BRAND = "Praline"
-FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Big+Shoulders+Display:wght@600;800;900&family=Caveat+Brush&display=swap"
+FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Big+Shoulders+Display:wght@600;800;900&family=Caveat+Brush&family=Gilda+Display&display=swap"
 
 # Current page path. Set by build.py before each page renders.
 CTX = {"depth": 0, "path": "/"}

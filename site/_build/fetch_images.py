@@ -42,6 +42,7 @@ PRODUCTS = {
 # Editorial photography: key -> (id, width, height, crop)
 EDITORIAL = {
     "hero": ("1682120501920-7ce18b00237a", 1600, 1300, "entropy"),
+    "hero-box": ("1548741487-18d363dc4469", 1100, 1300, "focalpoint&fp-x=.62&fp-y=.5"),
     "hero-truffles": ("1545015451-f05567aa6bcc", 900, 1100, "entropy"),
     "melt": ("1676817167465-38a0fe938c53", 1800, 700, "center"),
     "melt-dark": ("1657502096852-340a75dc56f7", 1800, 900, "center"),

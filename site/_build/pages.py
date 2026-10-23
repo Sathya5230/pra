@@ -317,7 +317,7 @@ def collection(handle):
   <aside class="filters-desktop" aria-label="Filters"><div id="filters-desktop"></div></aside>
   <div>
     <div class="toolbar">
-      <div style="display:flex;gap:.75rem;align-items:center"><button class="btn filter-btn" id="filter-open" data-open="filter-drawer">Filter</button><span id="count" class="muted" aria-live="polite"></span></div>
+      <div class="toolbar-start"><button class="btn filter-btn" id="filter-open" data-open="filter-drawer">Filter</button><span id="count" class="muted" aria-live="polite"></span></div>
       <label><span class="sr-only">Sort by</span><select id="sort"><option value="featured">Bestsellers first</option><option value="price-asc">Price, low to high</option><option value="price-desc">Price, high to low</option></select></label>
     </div>
     <div class="active-filters" id="active"></div>
@@ -857,7 +857,7 @@ def build_a_ballotin():
     </div>
     <div class="b-summary" id="b-summary"></div>
     <button class="btn btn-full btn-lg btn-block" id="b-add" disabled>Add to cart</button>
-    <button class="btn btn-block" id="b-surprise" style="margin-top:.5rem">Fill the rest for me</button>
+    <button class="btn btn-block" id="b-surprise">Fill the rest for me</button>
   </aside>
 </div></section>'''
 
